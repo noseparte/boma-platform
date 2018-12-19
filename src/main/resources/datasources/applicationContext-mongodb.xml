@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+
+
+
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<mongo:mongo host="${mongodb_url}" port="${mongodb_port}" >
+	  <mongo:options connections-per-host="200" 
+                   threads-allowed-to-block-for-connection-multiplier="100" 
+                   connect-timeout="30000"   
+                   max-wait-time="30000"   
+                   auto-connect-retry="true"
+                   socket-keep-alive="true" 
+                   socket-timeout="30000"  
+                   slave-ok="true"
+                   write-number="1"
+                   write-timeout="0"
+                   write-fsync="true" />
+    </mongo:mongo>
+	<!-- Mongodb身份验证 -->
+	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">  
+        <constructor-arg name="username"  value="${mongo_username}"/>  
+        <constructor-arg name="password"  value="${mongo_password}"/>  
+    </bean>
+    	
+	<!-- Offers convenience methods and automatic mapping between MongoDB JSON documents and your domain classes. -->	
+  	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+  			<constructor-arg ref="mongo"/>
+  			 <constructor-arg ref="userCredentials" />
+		    <constructor-arg name="databaseName" value="${mongodb_dbname}"/>		    
+  	</bean>
+  	
+
+
+</beans>
+

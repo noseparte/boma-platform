@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.data.OnlineAnalysis" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.data.OnlineAnalysis" >
+    <id column="channelid" property="channelid" jdbcType="VARCHAR" />
+    <id column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <id column="platfromid" property="platfromid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="ts" property="ts" jdbcType="VARCHAR" />
+    <result column="avgonlinecount" property="avgonlinecount" jdbcType="BIGINT" />
+    <result column="onlinecount" property="onlinecount" jdbcType="BIGINT" />
+    <result column="pcucount" property="pcucount" jdbcType="BIGINT" />
+    <result column="puctime" property="puctime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    channelid, datetime, gameid, gameserverid, gameversion, platfromid, type, ts, avgonlinecount, 
+    onlinecount, pcucount, puctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.data.OnlineAnalysis" >
+    select 
+    <include refid="Base_Column_List" />
+    from online_analysis
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.data.OnlineAnalysis" >
+    delete from online_analysis
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.data.OnlineAnalysis" >
+    insert into online_analysis (channelid, datetime, gameid, 
+      gameserverid, gameversion, platfromid, 
+      type, ts, avgonlinecount, 
+      onlinecount, pcucount, puctime
+      )
+    values (#{channelid,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, #{gameid,jdbcType=BIGINT}, 
+      #{gameserverid,jdbcType=BIGINT}, #{gameversion,jdbcType=VARCHAR}, #{platfromid,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{ts,jdbcType=VARCHAR}, #{avgonlinecount,jdbcType=BIGINT}, 
+      #{onlinecount,jdbcType=BIGINT}, #{pcucount,jdbcType=BIGINT}, #{puctime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.data.OnlineAnalysis" >
+    insert into online_analysis
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="platfromid != null" >
+        platfromid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="avgonlinecount != null" >
+        avgonlinecount,
+      </if>
+      <if test="onlinecount != null" >
+        onlinecount,
+      </if>
+      <if test="pcucount != null" >
+        pcucount,
+      </if>
+      <if test="puctime != null" >
+        puctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="platfromid != null" >
+        #{platfromid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="avgonlinecount != null" >
+        #{avgonlinecount,jdbcType=BIGINT},
+      </if>
+      <if test="onlinecount != null" >
+        #{onlinecount,jdbcType=BIGINT},
+      </if>
+      <if test="pcucount != null" >
+        #{pcucount,jdbcType=BIGINT},
+      </if>
+      <if test="puctime != null" >
+        #{puctime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.data.OnlineAnalysis" >
+    update online_analysis
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="avgonlinecount != null" >
+        avgonlinecount = #{avgonlinecount,jdbcType=BIGINT},
+      </if>
+      <if test="onlinecount != null" >
+        onlinecount = #{onlinecount,jdbcType=BIGINT},
+      </if>
+      <if test="pcucount != null" >
+        pcucount = #{pcucount,jdbcType=BIGINT},
+      </if>
+      <if test="puctime != null" >
+        puctime = #{puctime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.data.OnlineAnalysis" >
+    update online_analysis
+    set type = #{type,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      avgonlinecount = #{avgonlinecount,jdbcType=BIGINT},
+      onlinecount = #{onlinecount,jdbcType=BIGINT},
+      pcucount = #{pcucount,jdbcType=BIGINT},
+      puctime = #{puctime,jdbcType=VARCHAR}
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </update>
+  
+      <select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from online_analysis
+	   	<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by datetime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from online_analysis
+		<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+  
+</mapper>

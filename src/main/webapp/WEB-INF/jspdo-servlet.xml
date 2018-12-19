@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="com.xmbl.ops.controller">
+		<context:include-filter type="regex" expression=".*Controller" />
+	</context:component-scan>
+	<!--<mvc:annotation-driven />  -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+	</bean>
+
+</beans>

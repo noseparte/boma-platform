@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.organization.ResourcesRole" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.organization.ResourcesRole" >
+    <id column="resc_id" property="rescId" jdbcType="INTEGER" />
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.organization.ResourcesRole" >
+    delete from resources_role
+    where resc_id = #{rescId,jdbcType=INTEGER}
+      and role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="delete" parameterType="com.xmbl.ops.model.organization.ResourcesRole" >
+    delete from resources_role
+    where role_id = #{id ,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteResourceRole" parameterType="com.xmbl.ops.model.organization.ResourcesRole" >
+    delete from resources_role
+    where resc_id = #{rescId ,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.xmbl.ops.model.organization.ResourcesRole" >
+    insert into resources_role (resc_id, role_id)
+    values (#{rescId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.organization.ResourcesRole" >
+    insert into resources_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rescId != null" >
+        resc_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rescId != null" >
+        #{rescId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  	
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from resources_role
+		<where>
+			<if test="id != null ">
+				AND role_id = #{id,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+  <select id="hasAuthentic" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select 
+        count(1)
+    from 
+        resources_role
+    where
+          resc_id = #{rescId,jdbcType=INTEGER}
+     and  role_id = #{roleId,jdbcType=INTEGER}
+  </select>    
+	
+</mapper>

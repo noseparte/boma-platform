@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多级导航</title>
+	<link rel="stylesheet" href="../css/bootstrap/bootstrap.3.3.5.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<style type="text/css">
+		body {
+			background: #474f57;
+		}
+		.index-navbar {
+			background: #404952;
+			border-bottom: none;
+		}
+		.index-navbar .navbar-nav {
+			width: 100%;
+		}
+		.index-navbar .navbar-nav>li>a.menu-btn {
+			padding: 0 11px 0 1px;
+			font-size: 21px;
+			color: #ddd;
+			line-height: 43px;
+			border-right: 1px solid #333;
+		}
+		.index-navbar .navbar-nav>li>a.navbar-brand {
+			padding: 12px 0 10px 15px;
+			font-size: 22px;
+			color: #f1f1f1;
+			height: auto;
+			margin-left: 0px;
+		}
+		.index-navbar .navbar-nav>li>a.dropdown-toggle {
+			padding: 11px 10px 8px;
+		}
+		.main-icon {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			background: url(../image/teacher.png);
+			background-size: cover;
+			vertical-align: middle;
+			margin-right: 5px;
+		}
+		.index-container {
+			padding-top: 50px
+		}
+		.ui-sidebar {
+			width: 230px;
+			float: left;
+		}
+		.index-enlarge .ui-sidebar {
+			display: none;
+		}
+		.ui-nav {
+			margin-bottom: 37px;
+		}
+		.ui-nav .ui-nav-1>a {
+			background: #474f57;
+		}
+		.ui-nav .ui-nav-1.unfold>a {
+			background: #3c434a;
+		}
+		.nav-stacked>li+li {
+			margin-top: 0;
+		}
+		.ui-nav li>a {
+			background: #2e3338;
+			color: #777;
+			border-top: 1px solid #515a63;
+			border-bottom: 1px solid #424a52;
+		}
+		.ui-nav li>a:hover, .ui-nav li>a:focus{
+			background: #59646e;
+			color: #ccc;
+		}
+		.ui-nav li>a>i {
+			width: 40px;
+			line-height: 40px;
+			float: left;
+			border-right: 1px solid rgba(255,255,255,0.05);
+			margin: -11px 10px -11px -15px;
+			text-align: center;
+		}
+		.ui-nav li>a .glyphicon:before {
+			content: "\e079"; /*chevron-down*/
+		}
+		.ui-nav li.unfold>a .glyphicon:before {
+			content: "\e114"; /*chevron-up*/
+		}
+		.nav>.ui-nav-3>a {
+			padding-left: 35px;
+		}
+		.index-article {
+			margin-left: 230px;
+			margin-right: 0px;
+			width: auto;
+			overflow: hidden;
+			border-left: 1px solid #ccc;
+			background: #eeeff2;
+			min-height: 1000px;
+		}
+		.index-enlarge .index-article {
+			margin-left: 0;
+			border-left: none;
+		}
+		.index-footer {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: 100;
+			background: #333;
+			padding: 10px 0;
+			color: #777;
+			border-top: 1px solid #333;
+		}
+		.index-footer .copyright {
+			margin: 0 15px;
+			font-size: 11px;
+		}
+		.index-footer .copyright a{
+			color: inherit;
+		}
+	</style>
+	<script type="text/javascript">
+		var path = '<%=path %>';
+		var basePath = '../';
+		(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+	</script>
+</head>
+<body>
+	<header class="navbar navbar-default navbar-fixed-top index-navbar">
+		<nav class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li>
+					<a class="menu-btn" href="">
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</a>
+				</li>
+				<li>
+					<a class="navbar-brand" href="">学习宝<span class="bold">题库运营平台</span></a>
+				</li>
+				<li class="dropdown pull-right">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="main-icon"></i>
+						<span class="bold">zhaochaoqun</span>
+						<i class="caret"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#"><i class="glyphicon glyphicon-log-out"></i>&nbsp;Logout</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="index-container clearfix">
+		<aside class="ui-sidebar">
+			<nav class="ui-nav">
+				<ul class="nav nav-stacked" id="nav">
+					<li class="ui-nav-1 active" data-index="1">
+						<a href="#">
+							<span>Parent1</span>
+							<span class="pull-right">
+								<i class="glyphicon"></i>
+							</span>
+						</a>
+					</li>
+					<li class="ui-nav-2" data-index="1-1" style="display:none">
+						<a href="#">
+							<span>Child1</span>
+							<span class="pull-right">
+								<i class="glyphicon"></i>
+							</span>
+						</a>
+					</li>
+					<li class="ui-nav-3" data-index="1-1-1" data-url="tiku_ops/tranops/tranOpsAdminEditSearch" style="display:none">
+						<a href="#">
+							<span>GrandChild1</span>
+						</a>
+					</li>
+					<li class="ui-nav-1" data-index="2">
+						<a href="#">
+							<span>Parent2</span>
+							<span class="pull-right">
+								<i class="glyphicon"></i>
+							</span>
+						</a>
+					</li>
+					<li class="ui-nav-2" data-index="2-1" style="display:none">
+						<a href="#">
+							<span>Child2</span>
+							<span class="pull-right">
+								<i class="glyphicon"></i>
+							</span>
+						</a>
+					</li>
+					<li class="ui-nav-3" data-index="2-1-1" data-url="tiku_ops/tranops/tranOpsAdminEditSearch" style="display:none">
+						<a href="#">
+							<span>GrandChild2</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<article class="index-article"></article>
+	</section>
+	<footer class="index-footer">
+		<div class="copyright">学习宝&nbsp;©2015&nbsp;|&nbsp;<a href="http://www.xuexibao.cn/">学习宝，一拍就知道</a></div>
+	</footer>
+	<!--<script src="text/x-jquery-tmpl" id="mutil-nav-tmpl">
+		{{each items}}
+			<li class="ui-nav-{{=$value.level}}" data-index="{{=$value.index}}" data-url="{{=$value.url}}"{{if $value.level!==0}} style="display:none;"{{/if}}>
+				<a href="#">
+					<span>{{=$value.name}}</span>
+					{{if !$value.url}}
+					<span class="pull-right">
+						<i class="glyphicon"></i>
+					</span>
+					{{/if}}
+				</a>
+			</li>
+		{{/each}}
+	</script>-->
+	<script type="text/javascript">
+		MX.load({
+			js: 'lib/sea',
+			version: '150803a',
+			success: function() {
+				seajs.use(['lib/jquery'], function($) {
+					var nav = $('#nav'), items = nav.children(), sameLevelIndex, curUnfold, curUnfoldIndex, childReg;
+					nav.on('click', '.ui-nav-1,.ui-nav-2', function(e) {
+						var el = $(this), index;
+						index = el.data('index') + '';
+						if(el.hasClass('unfold')) {
+							// 收起子节点
+							items.filter('[data-index^="' + index + '-"]').hide().removeClass('unfold');
+						} else {
+							// 收起同级展开项
+							sameLevelReg = new RegExp(index.replace(/\d+$/, '') + '\\d+');
+							curUnfold = items.filter(function(i) {
+								var item = $(this);
+								return item.hasClass('unfold') && sameLevelReg.test(item.data('index') + '');
+							});
+							if(curUnfold[0]) {
+								curUnfoldIndex = '' + curUnfold.data('index');
+								items.filter('[data-index^="' + curUnfoldIndex + '-"]').hide().removeClass('unfold');
+								curUnfold.removeClass('unfold');
+							}
+							// 展开子节点
+							childReg = new RegExp('^' + index + '-\\d+$');
+							items.filter(function(i) {
+								var item = $(this);
+								return childReg.test(item.data('index') + '');
+							}).show();
+						}
+						el.toggleClass('unfold');
+					}).on('click', '.ui-nav-3', function(e) {
+						console.log('打开页面', $(this).data('url'));
+					});
+				});
+			}
+		});
+	</script>
+	<!--<script type="text/javascript">
+		var data = [
+			{
+				level: 0,
+				name: '运营管理',
+				url: ''
+				index: '1'
+			},
+			{
+				level: 1,
+				name: '用户提问管理',
+				url: '',
+				index: '1-1'
+			},
+			{
+				level: 2,
+				name: '用户求组实时处理',
+				url: 'xxx',
+				index: '1-1-1'
+			},
+			{
+				level: 1,
+				name: '运营活动管理',
+				url: '',
+				index: '1-2'
+			},
+			{
+				level: 2,
+				name: '活动待审',
+				url: 'xxx',
+				index: '1-2-1'
+			},
+			{
+				level: 0,
+				name: '运营管理',
+				url: ''
+				index: '2'
+			},
+			{
+				level: 1,
+				name: '用户提问管理',
+				url: '',
+				index: '2-1'
+			},
+			{
+				level: 2,
+				name: '用户求组实时处理',
+				url: 'xxx',
+				index: '2-1-1'
+			},
+			{
+				level: 1,
+				name: '运营活动管理',
+				url: '',
+				index: '2-2'
+			},
+			{
+				level: 2,
+				name: '活动待审',
+				url: 'xxx',
+				index: '2-2-1'
+			}
+		];
+	</script>-->
+</body>
+</html>

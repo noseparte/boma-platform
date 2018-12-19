@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- scan for mappers and let them be autowired -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="org.mybatis.jpetstore.persistence" />
+	</bean>
+
+	<!-- database corporation -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/datasources/MapperConfigMPDB.xml" />
+	</bean>
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url"  value="${jdbc.url}" />
+		<property name="username"  value="${jdbc.username}" />
+		<property name="password"  value="${jdbc.password}" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<bean id="druid-stat-interceptor"
+		class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+	</bean>
+	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+		scope="prototype">
+		<property name="patterns">
+			<list>
+				<value>com.xmbl.ops.service.*</value>
+			</list>
+		</property>
+	</bean>
+	<aop:config>
+		<aop:advisor advice-ref="druid-stat-interceptor"
+			pointcut-ref="druid-stat-pointcut" />
+	</aop:config>
+	<!-- 添加事务支持 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 核心线程数 -->
+	<!-- 最大线程数 -->
+	<!-- 队列最大长度 -->
+	<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+	<bean id="taskExecutor"	class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="${task.core_pool_size}" />
+		<property name="maxPoolSize" value="${task.max_pool_size}" />
+		<property name="queueCapacity" value="${task.queue_capacity}" />
+		<property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
+	</bean> 
+</beans>
+

@@ -1,0 +1,155 @@
+/**
+ * Copyright © 2018 noseparte © BeiJing BoLuo Network Technology Co. Ltd.
+ * @Author Noseparte
+ * @Compile 2018年7月2日 -- 下午4:07:36
+ * @Version 1.0
+ * @Description	Main Css
+ */
+body {
+	background: black;
+}
+a{
+	color: black;
+}
+.container-xmbl{
+	width:96%; min-width:1000px;margin: 30px;border:7px #008B8B double;
+	border-radius:8px;background: #337ab7;box-shadow:6px 7px 7px #008B8B;/* transform: rotate(1deg);旋转 正：顺时针 | 负：逆时针 */
+	padding-left: 8px;
+} 
+.logo{
+	width: 25%;
+}
+.navbar-nav-ul > li {
+	display:inline-block;
+}
+.index-navbar {
+	background: #337ab7;
+	/* border-bottom: none; */
+}
+.index-navbar .navbar-nav {
+	width: 100%;
+}
+.index-navbar .navbar-nav>li>a.menu-btn {
+	font-size: 21px;
+	color: #4183c4;
+	line-height: 43px;
+	border-right: 1px solid #333;
+}
+.index-navbar .navbar-nav>li>a.navbar-brand{
+	font-size: 18px;
+	height: auto;
+	margin-left: 0px;
+}
+.bold{
+	color: #FFF;
+	margin-top: 10px;
+}
+.index-navbar .navbar-nav>li>a.dropdown-toggle {
+	padding: 11px 10px 8px;
+}
+.index-navbar .navbar-nav>.open>a, .index-navbar .navbar-nav>.open>a:hover {
+	background-color: #59646e;
+}
+.main-icon {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url(cxy_03.png);
+	background-size: cover;
+	vertical-align: middle;
+	margin-right: 5px;margin-bottom: 5px;
+}
+.menu-arrow-icon{
+	float:right;margin-right: 4px;margin-top: 4px;
+}
+.menu-arrow-icon-after{
+	float:right;margin-right: 4px;margin-top: 4px;
+}
+.ui-sidebar {
+	width: 230px;
+	float: left;
+	border-radius: 3px;
+}
+.index-enlarge .ui-sidebar {
+	display: none;
+}
+.ui-nav {
+	margin-bottom: 37px;
+}
+.ui-nav .ui-nav-1>a {
+	/* background: #474f57; */
+}
+.ui-nav .ui-nav-1.unfold>a{
+	background: #337ab7;
+}
+.nav-stacked>li+li {
+	margin-top: 0;
+}
+.ui-nav li>a {
+	background: #337ab7;
+	color: #c5ced6; border-left:1px solid #2098d1;
+	border-top: 1px solid #2098d1;border-radius: 7px;
+	border-bottom: 1px solid #2098d1;
+}
+.ui-nav li>a:hover, .ui-nav li>a:focus, .ui-nav li.unfold>a{
+	background: #337ab7; color: #fff;
+}
+.ui-nav li>a>i {
+	width: 40px;
+	line-height: 40px;
+	float: left;
+	border-right: 1px solid rgba(255,255,255,0.05);
+	margin: -11px 10px -11px -15px;
+	text-align: center;
+}
+.ui-nav li>a .glyphicon:before {
+	content: "\e079"; /*chevron-down*/
+}
+.ui-nav li.unfold>a .glyphicon:before {
+	content: "\e114"; /*chevron-up*/
+}
+.nav>.ui-nav-3>a {
+	padding-left: 35px;
+}
+.nav>.ui-nav-4>a {
+	padding-left: 55px;
+}
+.index-article {
+	margin: 0 0 38px 230px;
+	width: auto;
+	overflow: hidden;
+	border-left: 1px solid #ccc;
+	background: #eeeff2;
+	height: 1000px;
+}
+.index-enlarge .index-article {
+	margin-left: 0;
+	border-left: none;
+}
+.index-footer {
+	bottom: 0;
+	width: 100%;
+	z-index: 100;
+	background: #337ab7;
+	padding: 10px 0;
+	color: #FFD700;
+	/* border-top: 1px solid #333; */
+}
+.index-footer .copyright {
+	margin: 0 15px;text-align: center;
+	font-size: 14px;
+}
+.index-footer .copyright a{
+	color: inherit;
+}
+
+.gongan{
+	display:inline-block;height:100%;
+	padding-left:30px;margin-left:0px;
+	background:url(gongan.png) no-repeat left center;
+}
+.ui-frame {
+	border: none;
+	width: 100%;
+	height: 100%;
+}

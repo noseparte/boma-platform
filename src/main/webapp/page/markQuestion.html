@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>识别题目</title>
+	<link href="../css/bootstrap/bootstrap.3.3.5.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/exam/problem.css" rel="stylesheet" type="text/css"/>
+	<style type="text/css">
+		.page-header {
+			padding: 8px 20px;
+			margin: 0 0 15px;
+		}
+		.container {
+			width: 100%;
+			border: 1px solid #ddd;
+			padding-bottom: 5px;
+			margin: 0 15px;
+		}
+		footer.container {
+			margin-bottom: 15px;
+			padding-top: 10px;
+			text-align: center;
+		}
+		#knowledge-tree-container {
+			position: absolute;
+			border: 1px solid #ddd;
+			background: white;
+			min-width: 600px;
+			height: 300px;
+			overflow-y: scroll;  
+			z-index: 10;
+		}
+		.knowledge-close {
+			float: right;
+			padding: 5px;
+			z-index: 5;
+		}
+		.knowledge-tag {
+			margin-left: 3px;
+		}
+	</style>
+	<script type="text/javascript">
+		var path = '<%=path %>';
+		var basePath = '../';
+		(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+	</script>
+</head>
+<body>
+	<header class="page-header">
+		<span class="h3">题目审核</span>
+	</header>
+	<section class="container">
+		<header class="h4">题目</header>
+		<article>
+			<div class="pt1"><!--B1--><span class="qseq"></span>直线 <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">x</td></tr><tr><td>a</td></tr></tbody></table>±  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">y</td></tr><tr><td>b</td></tr></tbody></table>=0</span>称为椭圆 <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal">C：  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>x</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>a</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table>+  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>y</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table>=1(a＞b＞0)</span>的“特征直线”，若椭圆的离心率 <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal">e=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><table cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 0px"><div hassize="7"><div style="width:6px;background: url('http://img.91xuexibao.com/images/part/8730U.png') repeat-y; height: 1px;overflow: hidden" muststretch="v"></div><div style="width:6px;background: url('http://img.91xuexibao.com/images/part/8730D.png') no-repeat; height: 7px; overflow: hidden"></div></div></td><td style="padding:0;padding-left: 2px; border-top: black 1px solid;line-height:normal">3</td></tr></tbody></table></td></tr><tr><td>2</td></tr></tbody></table></span>． <br>（Ⅰ）求椭圆的“特征直线”方程； <br>（Ⅱ）过椭圆C上一点M（x <sub>0</sub>，y <sub>0</sub>）（x <sub>0</sub>≠0）作圆x <sup>2</sup>+y <sup>2</sup>=b <sup>2</sup>的切线，切点为P、Q，直线PQ与椭圆的“特征直线”相交于点E、F，O为坐标原点，若 <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OE</td></tr></tbody></table>•  <table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OF</td></tr></tbody></table></span>取值范围恰为 <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal">(-∞，-3)∪[  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">3</td></tr><tr><td>16</td></tr></tbody></table>，+∞)</span>，求椭圆C的方程． <!--E1--></div>
+		</article>
+	</section>
+	<section class="container">
+		<header class="h4">答案</header>
+		<article>xxx</article>
+	</section>
+	<section class="container">
+		<header class="h4">解题思路</header>
+		<article>
+			<div class="pt6"><!--B6--><em>解答：</em>解：（Ⅰ）设c <sup>2</sup>=a <sup>2</sup>-b <sup>2</sup>（c＞0），则由 <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal">e=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">c</td></tr><tr><td>a</td></tr></tbody></table>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><table cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 0px"><div hassize="7"><div style="width:6px;background: url('http://img.91xuexibao.com/images/part/8730U.png') repeat-y; height: 1px;overflow: hidden" muststretch="v"></div><div style="width:6px;background: url('http://img.91xuexibao.com/images/part/8730D.png') no-repeat; height: 7px; overflow: hidden"></div></div></td><td style="padding:0;padding-left: 2px; border-top: black 1px solid;line-height:normal">3</td></tr></tbody></table></td></tr><tr><td>2</td></tr></tbody></table></span>，得  <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>c</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>a</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>a</span><span style="vertical-align:super;font-size:90%">2</span></span>-<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>a</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">3</td></tr><tr><td>4</td></tr></tbody></table></span>， <br>∴ <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">b</td></tr><tr><td>a</td></tr></tbody></table>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">1</td></tr><tr><td>2</td></tr></tbody></table>&nbsp;，&nbsp;a=2b</span>，椭圆的“特征直线”方程为：x±2y=0． <br>（Ⅱ）根据P、Q是以MO为直径的圆和圆x <sup>2</sup>+y <sup>2</sup>=b <sup>2</sup>的交点，把两圆的方程相减可得 <br>直线PQ的方程，并化为一般式为 x <sub>0</sub>x+y <sub>0</sub>y=b <sup>2</sup>，设E（x <sub>1</sub>，y <sub>1</sub>），F（x <sub>2</sub>，y <sub>2</sub>）， <br>联立 <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 0"><div hassize="21"><div style="background: url('http://img.91xuexibao.com/images/part/123U.png') no-repeat; width:9px; height:6px;overflow:hidden"></div><div style="background: url('http://img.91xuexibao.com/images/part/123M.png') repeat-y; width:9px; height:1px;overflow:hidden" muststretch="v"></div><div style="background: url('http://img.91xuexibao.com/images/part/123L.png') no-repeat; width:9px; height:9px;overflow:hidden"></div><div style="background: url('http://img.91xuexibao.com/images/part/123M.png') repeat-y; width:9px; height:1px;overflow:hidden" muststretch="v"></div><div style="background: url('http://img.91xuexibao.com/images/part/123D.png') no-repeat; width:9px; height:6px;overflow:hidden"></div></div></td><td><table style="text-align: left; width: 100%; margin-left: 1px; margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td><span><span>x</span><span style="vertical-align:sub;font-size:90%">0</span></span>x+<span><span>y</span><span style="vertical-align:sub;font-size:90%">0</span></span>y=<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:6px">x-2y=0</td></tr></tbody></table></td><td style="font-size: 0"></td></tr></tbody></table></span>，解得  <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><span><span>y</span><span style="vertical-align:sub;font-size:90%">1</span></span>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>y</span><span style="vertical-align:sub;font-size:90%">0</span></span>+2<span><span>x</span><span style="vertical-align:sub;font-size:90%">0</span></span></td></tr></tbody></table></span>． &nbsp;同理可求&nbsp;  <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><span><span>y</span><span style="vertical-align:sub;font-size:90%">2</span></span>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>y</span><span style="vertical-align:sub;font-size:90%">0</span></span>-2<span><span>x</span><span style="vertical-align:sub;font-size:90%">0</span></span></td></tr></tbody></table></span>， <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OE</td></tr></tbody></table>•  <table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OF</td></tr></tbody></table>=<span><span>x</span><span style="vertical-align:sub;font-size:90%">1</span></span><span><span>x</span><span style="vertical-align:sub;font-size:90%">2</span></span>+<span><span>y</span><span style="vertical-align:sub;font-size:90%">1</span></span><span><span>y</span><span style="vertical-align:sub;font-size:90%">2</span></span>=-3<span><span>y</span><span style="vertical-align:sub;font-size:90%">1</span></span><span><span>y</span><span style="vertical-align:sub;font-size:90%">2</span></span>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%">3<span><span>b</span><span style="vertical-align:super;font-size:90%">4</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%">4      <table cellspacing="0" cellpadding="0"><tbody><tr><td>x</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table>-      <table cellspacing="0" cellpadding="0"><tbody><tr><td>y</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table></td></tr></tbody></table></span>，∵M（x <sub>0</sub>，y <sub>0</sub>）是椭圆上的点， <br>∴ <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><table cellspacing="0" cellpadding="0"><tbody><tr><td>x</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table></td></tr><tr><td style="padding-top:1px;font-size:90%">4<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table>+  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><table cellspacing="0" cellpadding="0"><tbody><tr><td>y</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table></td></tr><tr><td style="padding-top:1px;font-size:90%"><span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table>=1</span>，从而  <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OE</td></tr></tbody></table>•  <table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OF</td></tr></tbody></table>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%">3<span><span>b</span><span style="vertical-align:super;font-size:90%">4</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%">4      <table cellspacing="0" cellpadding="0"><tbody><tr><td>x</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table>-      <table cellspacing="0" cellpadding="0"><tbody><tr><td>y</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table></td></tr></tbody></table>=  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%">3<span><span>b</span><span style="vertical-align:super;font-size:90%">4</span></span></td></tr><tr><td style="padding-top:1px;font-size:90%"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">17</td></tr><tr><td>4</td></tr></tbody></table><table cellspacing="0" cellpadding="0"><tbody><tr><td>x</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">           2          </div><div mathtag="msubsup_sub">           0          </div></td></tr></tbody></table>-<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr></tbody></table></span>， <br>∵0＜x <sub>0</sub><sup>2</sup>≤4b <sup>2 </sup>，∴ <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal">-<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span>＜  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">17</td></tr><tr><td>4</td></tr></tbody></table><table cellspacing="0" cellpadding="0"><tbody><tr><td>x</td><td style="line-height: normal; padding-left: 1px; font-size: 90%"><div mathtag="msubsup_sup" hassize="-1">       2      </div><div mathtag="msubsup_sub">       0      </div></td></tr></tbody></table>-<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span>≤16<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></span>，∴ <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OE</td></tr></tbody></table>•  <table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OF</td></tr></tbody></table>＜-3<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></span>，或  <span dealflag="1" class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OE</td></tr></tbody></table>•  <table style="margin-right: 1px" cellspacing="-1" cellpadding="-1"><tbody><tr><td style="font-size: 90%"><div hassize="9"><div style="background: url('http://img.91xuexibao.com/images/part/8594L.png') repeat-x; width:1px; height:5px;float:left;overflow:hidden" muststretch="h"></div><div style="background: url('http://img.91xuexibao.com/images/part/8594.png') no-repeat; width:9px; height:5px;float:left;overflow:hidden"></div></div></td></tr><tr><td>OF</td></tr></tbody></table>≥  <table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%">3<span><span>b</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td>16</td></tr></tbody></table></span>， <br>由条件得&nbsp; b <sup>2</sup>=1，故椭圆C的方程为 <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black;padding-bottom:1px;font-size:90%"><span><span>x</span><span style="vertical-align:super;font-size:90%">2</span></span></td></tr><tr><td>4</td></tr></tbody></table>+<span><span>y</span><span style="vertical-align:super;font-size:90%">2</span></span>=1</span>． <!--E6--></div>
+		</article>
+	</section>
+	<section class="container">
+		<header class="h4">年级、学科、题型</header>
+		<article>
+			<div class="row form-inline">
+				<div class="col-xs-2">
+					<label class="control-label" for="grade">年级</label>
+					<select class="form-control" id="grade" name="grade">
+						<option value="">请选择年级</option>
+						<option value="1">小学</option>
+						<option value="2">初中</option>
+						<option value="3">高中</option>
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label class="control-label" for="subject">学科</label>
+					<select class="form-control" id="subject" name="subject">
+						<option value="">请选择学科</option>
+						<option value="1">语文</option>
+						<option value="2">数学</option>
+						<option value="3">英语</option>
+						<option value="4">化学</option>
+						<option value="5">物理</option>
+						<option value="6">生物</option>
+						<option value="7">历史</option>
+						<option value="8">地理</option>
+						<option value="9">政治</option>
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label class="control-label" for="type">题型</label>
+					<select class="form-control" id="type" name="type">
+						<option value="">请选择题型</option>
+						<option value="1">单选</option>
+						<option value="2">多选</option>
+						<option value="3">填空</option>
+						<option value="4">解答</option>
+					</select>
+				</div>
+			</div>
+		</article>
+	</section>
+	<section class="container">
+		<header class="h4">知识点</header>
+		<article class="form-inline" id="knowledge-container" style="display: relative">
+			<div class="form-group has-feedback">
+				<input type="text" class="form-control search-key" value="" placeholder="最多添加3个知识点">
+				<span class="glyphicon glyphicon-search search-btn"></span>
+			</div>
+			<div class="knowledge-list">
+				<span class="label label-default knowledge-tag" data-id="123">三角形全等<span class="glyphicon glyphicon-remove knowledge-remove"></span></span>
+			</div>
+			<div id="knowledge-tree-container" style="display:none">
+				<a href="#" title="关闭" class="glyphicon glyphicon-remove knowledge-close"></a>
+				<div id="knowledge-tree"></div>
+			</div>
+		</article>
+	</section>
+	<section class="container">
+		<header class="h4">难度</header>
+		<article>
+			<label class="radio-inline">
+				<input type="radio" name="difficulty" value="1"> 简单
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="difficulty" value="2"> 中等
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="difficulty" value="3"> 困难
+			</label>
+		</article>
+	</section>
+	<section class="container">
+		<header class="h4">题目分类</header>
+		<article>
+			<label class="checkbox-inline">
+				<input type="checkbox" name="category" value="1"> 同步
+			</label>
+			<label class="checkbox-inline">
+				<input type="checkbox" name="category" value="2"> 期中期末
+			</label>
+			<label class="checkbox-inline">
+				<input type="checkbox" name="category" value="3"> 真题模拟
+			</label>
+		</article>
+	</section>
+	<section class="container">
+		<header class="h4">审核意见</header>
+		<article class="text-danger">
+			<p>审核结果：审核未通过</p>
+			<p>错误原因：知识点不对</p>
+		</article>
+	</section>
+	<footer class="container">
+		<button id="submit" class="btn btn-primary">提交</button>
+		<a href="" class="btn btn-default" style="margin-left:64px">返回</a>
+	</footer>
+	<script>
+		MX.load({
+			js: 'lib/sea',
+			version: '150528',
+			success: function() {
+				seajs.use(['lib/jquery', 'util/bootstrap.treeview'], function($, treeview) {
+					var knowledgeContainer = $('#knowledge-container'),
+					knowledgeList = knowledgeContainer.find('.knowledge-list'),
+						treeContainer = $('#knowledge-tree-container'),
+						knowledgeTree = $('#knowledge-tree');
+						// 知识点哈希
+						knowledgeHash = {
+							length: 0
+						},
+						gradeDrop = $('#grade'),
+						subjectDrop = $('#subject');
+					// 初始化知识点哈希
+					knowledgeList.find('.knowledge-tag').each(function() {
+						knowledgeHash[$(this).data('id')] = 1;
+						knowledgeHash.length++;
+					});
+					// 搜索知识点
+					knowledgeContainer.find('.search-btn').on('click', function(e) {
+						var el = $(this), grade, subject, searchInput;
+						e.stopPropagation();
+						searchInput = el.siblings('.search-key');
+						grade = gradeDrop.find('option:selected').val();
+						if(!grade) {
+							searchInput.val('');
+							alert('请先选择相应的年级');
+							return;
+						}
+						subject = subjectDrop.find('option:selected').val();
+						if(!subject) {
+							searchInput.val('');
+							alert('请先选择相应的学科');
+							return;
+						}
+						if(knowledgeHash.length > 3) {
+							searchInput.val('');
+							alert("您添加的知识点已达上限");
+							return;
+						}
+						if(!el.data('sending')) {
+							el.data('sending', 1);
+							$.ajax({
+								url: '',
+								type: 'GET',
+								data: {
+									key: searchInput.val().trim(),
+									grade: grade,
+									subject: subject
+								},
+								dataType: 'json',
+								success: function(data) {
+									el.data('sending', 0);
+									searchInput.val('');
+									if(data.status === 0) {
+										if(data.result.length) {
+											knowledgeTree.treeview({
+												color: "#428bca",
+												showBorder: false,
+												data: data.result,
+												levels: 1,
+												onNodeSelected: function(e, node) {
+													// 如果是叶子节点
+													var knowledgeId = node.id;
+													if(knowledgeId) {
+														//  如果已经添加该知识点 
+														if(knowledgeHash[knowledgeId]) {
+															alert('该知识点已添加');
+														} else {
+															if(knowledgeHash.length >= 3) {
+																alert("您添加的知识点已达上限");
+																return;
+															}
+															// 添加知识点
+															knowledgeHash[knowledgeId] = 1;
+															knowledgeHash.length++;
+															knowledgeList.append($('<span class="label label-default knowledge-tag" data-id="' + knowledgeId + '">' + node.text + '<span class="glyphicon glyphicon-remove knowledge-remove"></span></span>'));
+														}
+													}
+												}
+											});
+											treeContainer.show();
+										} else {
+											alert('请尝试其他关键词');
+										}
+									} else {
+										alert(data.msg);
+									}
+								},
+								error: function() {
+									el.data('sending', 0);
+									knowledgeTree.treeview({
+										color: "#428bca",
+										showBorder: false,
+										data:  [
+											{
+												text: "几何",
+												nodes: [
+													{
+														text: "直线",
+														id: '213'
+													},
+													{
+														text: "三角形",
+														id: '215'
+													},
+													{
+														text: "四边形",
+														id: '214'
+													},
+												]
+											},
+											{
+												text: "代数",
+												nodes: [
+													{
+														text: '函数',
+														id: '216'
+													}
+												]
+											}
+										],
+										levels: 1,
+										onNodeSelected: function(e, node) {
+											// 如果是叶子节点
+											var knowledgeId = node.id;
+											if(knowledgeId) {
+												//  如果已经添加该知识点 
+												if(knowledgeHash[knowledgeId]) {
+													alert('该知识点已添加');
+												} else {
+													if(knowledgeHash.length >= 3) {
+														alert("您添加的知识点已达上限");
+														return;
+													}
+													// 添加知识点
+													knowledgeHash[knowledgeId] = 1;
+													knowledgeHash.length++;
+													knowledgeList.append($('<span class="label label-default knowledge-tag" data-id="' + knowledgeId + '">' + node.text + '<span class="glyphicon glyphicon-remove knowledge-remove"></span></span>'));
+												}
+											}
+										}
+									});
+									treeContainer.show();
+									alert('网络情况不佳，请稍后再试');
+								}
+							});
+						}
+					});
+					// 删除知识点
+					knowledgeContainer.on('click', '.knowledge-remove', function(e) {
+						var el = $(this).closest('.knowledge-tag'), id;
+						id = el.data('id');
+						delete knowledgeHash[id];
+						knowledgeHash.length--;
+						el.remove();
+					});
+					knowledgeContainer.on('click', '.knowledge-close', function(e) {
+						e.preventDefault();
+						treeContainer.hide();
+					});
+					$('#submit').on('click', function(e) {
+						var el = $(this), data = {
+							questionId: '',
+							realKnowledge: [],
+							knowledgeText: [],
+							category: []
+						}, categories;
+						// 表单验证
+						data.learnPhase = gradeDrop.find('option:selected').val();
+						if(!data.learnPhase) {
+							alert('请选择相应的年级');
+							return;
+						}
+						data.subject = subjectDrop.find('option:selected').val();
+						if(!data.subject) {
+							alert('请选择相应的学科');
+							return;
+						}
+						data.realType = $('#type').find('option:selected').val();
+						if(!data.realType) {
+							alert('请选择相应的题型');
+							return;
+						}
+						if(!knowledgeHash.length) {
+							alert('请选择至少一个知识点');
+							return;
+						}
+						data.realDiff = $('input[name=difficulty]:checked').val();
+						if(!data.realDiff) {
+							alert('请选择难度');
+							return;
+						}
+						categories = $('input[name=category]:checked');
+						if(!categories.length) {
+							alert('请选择题目分类');
+							return;
+						}
+
+						// 提交表单
+						el.prop('disabled', true);
+						knowledgeList.find('.knowledge-tag').each(function() {
+							var el = $(this);
+							data.realKnowledge.push(el.data('id'));
+							data.knowledgeText.push(el.text());
+						});
+						categories.each(function() {
+							data.category.push($(this).val());
+						});
+						data.realKnowledge = data.realKnowledge.join();
+						data.knowledgeText = data.knowledgeText.join();
+						data.category = data.category.join();
+						$.ajax({
+							url: '',
+							type: 'POST',
+							data: data,
+							dataType: 'json',
+							success: function(data) {
+								el.prop('disabled', false);
+								if(data.status === 0) {
+									document.location.href = '';
+								} else {
+									alert(data.msg);
+								}
+							},
+							error: function() {
+								el.prop('disabled', false);
+								alert('网络情况不佳，请稍后再试');
+							}
+						});
+					});
+				});
+			}
+		});
+	</script>
+</body>
+</html>

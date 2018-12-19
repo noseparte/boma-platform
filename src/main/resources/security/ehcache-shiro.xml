@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="es">
+
+    <diskStore path="java.io.tmpdir/shiro-ehcache"/>
+    
+    <!-- 默认缓存配置. 自动失效：最后一次访问时间间隔300秒失效，若没有访问过自创建时间600秒失效。-->
+ 	<defaultCache
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120">
+    </defaultCache>
+
+    <!-- shiro授权缓存配置. 自动失效：最后一次访问时间间隔300秒失效，若没有访问过自创建时间600秒失效。-->
+	<cache name="shiro-authorizationCache"
+           maxEntriesLocalHeap="3000"
+           eternal="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+	<!-- shiro认证缓存配置. 自动失效：最后一次访问时间间隔300秒失效，若没有访问过自创建时间600秒失效。-->
+    <cache name="shiro-authenticationCache"
+           maxEntriesLocalHeap="3000"
+           eternal="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- shiro session缓存配置. 自动失效：最后一次访问时间间隔300秒失效，若没有访问过自创建时间600秒失效。-->
+    <cache name="shiro-activeSessionCache"
+           maxElementsInMemory="3000"
+           overflowToDisk="false"
+           eternal="false"
+           timeToLiveSeconds="600"
+           timeToIdleSeconds="300"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120">
+    </cache>
+    
+     <!-- shiro kickout session缓存配置. 自动失效：最后一次访问时间间隔300秒失效，若没有访问过自创建时间600秒失效。-->
+    <cache name="shiro-kickout-session"
+           maxElementsInMemory="3000"
+           overflowToDisk="false"
+           eternal="false"
+           timeToLiveSeconds="0"
+           timeToIdleSeconds="0"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120">
+    </cache>
+
+</ehcache>

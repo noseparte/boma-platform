@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择重复题目</title>
+	<link href="http://115.28.180.159:8080/tiku_ops/css/bootstrap/bootstrap.3.3.5.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/exam/problem.css" rel="stylesheet" type="text/css"/>
+	<style type="text/css">
+		.mark-repeat {
+			margin: 20px 20px 0;
+			padding-bottom: 15px;
+		}
+		.mark-repeat .panel-heading span{
+			font-size: 18px;
+		}
+		.mark-repeat .btn {
+			min-width: 100px;
+		}
+		.mark-repeat .panel-body {
+			padding-top: 8px;
+			margin-bottom: 15px;
+		}
+		.mark-repeat table.contrast {
+			margin-top: 15px;
+			width: 100%
+		}
+		.mark-repeat th.title {
+			height: 35px;
+			color: #fff;
+			background: #3399ff;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 14px;
+		}
+		.mark-repeat .contrast .container {
+			padding: 0;
+		}
+		.mark-repeat .similar:nth-child(n+1) {
+			margin-top: 13px;
+			max-height: 485px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.mark-repeat ul.similar {
+			margin-top: 0;
+		}
+		.mark-repeat ul.similar>li {
+			padding: 8px 15px ;
+			border-top: 1px solid #c51114;
+		}
+		.mark-repeat ul.similar>li:first-child {
+			border-top: 0;
+		}
+		.mark-repeat .contrast tr {
+			vertical-align: top;
+		}
+		.mark-repeat .panel>.contrast>tbody>tr>*:nth-child(n){
+			border: 1px solid #c51114;
+		}
+		.mark-repeat .content {
+			word-break: break-all;
+		}
+		.mark-repeat .btn-container {
+			margin-top: -5px;
+			float: right;
+			display: inline-block;
+			padding-right: 35px;
+			height: 34px;
+			line-height: 34px;
+		}
+		.mark-repeat .btn-container span {
+			font-size: 16px;
+		}
+		.solution{width:100%; overflow:hidden; background-color:#fff; }
+		.solution .solve > h1{
+			font-size:16px;
+			font-weight:bold;
+			color:#0e7aff;
+			margin-bottom:10px;
+		}
+		.solution .solve .detail{ font-size:14px; line-height:24px; }
+		.solution .solve .detail img{ max-width:100%; }
+		.solution .solve .detail table{ max-width:100%; }
+		.solution .content * {
+			width: auto !important;
+		}
+	</style>
+</head>
+<body>
+	<section class="mark-repeat">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span>去重结果检查</span>
+				<div class="btn-container" style="display:none">
+					<button id="confirm" class="btn btn-success">√正确</button>
+					<button id="error" class="btn btn-danger" data-toggle="modal" data-target=".modal" style="margin-left:35px">x错误</button>
+					<a style="margin-left:35px" href="#">&lt;&lt;返回</a>
+				</div>
+				<div class="btn-container">
+					<span><span class="text-danger">x错误</span>&nbsp;重复题目中存在不重复题目</span>
+					<a id="back" style="margin-left:35px" href="#">&lt;&lt;返回</a>
+				</div>
+			</div>
+			<table class="panel-body contrast table-bordered">
+				<tr class="row">
+					<th class="title col-md-4">最佳题目</th>
+					<th class="title col-md-4">重复题目</th>
+					<th class="title col-md-4">不重复题目</th>
+				</tr>
+				<tr class="row">
+					<td class="container col-md-4">
+						<ul id="best-result" class="solution similar"></ul>
+					</td>
+					<td class="container col-md-4">
+						<ul id="repeat-result" class="solution similar"></ul>
+					</td>
+					<td class="container col-md-4">
+						<ul id="no-repeat-result" class="solution similar"></ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<!--错误原因浮层begin-->
+	<div class="modal fade"  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">错误原因</h4>
+				</div>
+				<div class="modal-body">
+					<ul class="radio">
+						<li>
+							<label><input type="radio" name="error" value="最佳题目缺少图片、乱码">最佳题目缺少图片、乱码</label>
+						</li>
+						<li>
+							<label><input type="radio" name="error" value="重复题目中存在不重复题目">重复题目中存在不重复题目</label>
+						</li>
+						<li>
+							<label><input type="radio" name="error" value="不重复题目中存在重复题目">不重复题目中存在重复题目</label>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="popSure">确认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--错误原因浮层end-->
+	<script src="http://115.28.180.159:8080/tiku_ops/js/lib/jquery.js"></script>
+	<script src="../js/jquery/jquery.tmpl.min.js"></script>
+	<script type="text/x-jquery-tmpl" id="question-tmpl">
+		<li class="solve item" data-id="{{= $data.questionId}}">
+			<div class="content">
+				<div class="detail">
+					{{html $data.content}}
+				</div>
+			</div>
+		</li>
+	</script>
+	<script type="text/x-jquery-tmpl" id="detail-tmpl">
+		<li class="item" data-id="{{= $data.questionId}}">
+			<div class="content solve">
+				<h1>题目</h1>
+				<div class="detail">
+					{{html $data.content}}
+				</div>
+				<h1>答案</h1>
+				<div class="detail">
+					{{html $data.answer}}
+				</div>
+				<h1>解析</h1>
+				<div class="detail">
+					{{html $data.solution}}
+				</div>
+			</div>
+		</li>
+	</script>
+	<script type="text/javascript">
+		window.similarList = {"candidate_list":[{"answer":"<div>【答案】A</div>","content":"<div>【题文】<br />在组成植物体的化学元素中，占鲜重最多的是（&nbsp;&nbsp;&nbsp;&nbsp;）<table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td width=\"25%\">A．氧元素 </td><td width=\"25%\">B．碳元素 </td><td width=\"25%\">C．氢元素 </td><td width=\"25%\">D．氮元素</td></tr></table></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"","qualityOrder":17,"questionId":2928767,"SimOrder":17,"solution":"<div>【解析】略</div>"}, {"answer":"<div>【答案】A</div>","content":"<div>在组成植物体的化学元素中，质量分数最多的是（&nbsp;&nbsp;&nbsp;）<table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td width=\"25%\">A．O元素</td><td width=\"25%\">B．C元素</td><td width=\"25%\">C．H元素</td><td width=\"25%\">D．N元素</td></tr></table></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"组成细胞的分子 第2章组成细胞的分子","qualityOrder":13,"questionId":36023651,"SimOrder":16,"solution":"<div>【解析】植物体的组成元素中，有65%为氧元素，18%为碳元素，10%为氢元素，3%为氮元素。</div>"}, {"answer":"<div class=\"doc_answer\"><div>  <p class=\"MsoNormal\">A</p>  </div></div>","content":"<div class=\"doc_question\"><div>  <p class=\"MsoNormal\">在组成植物体的化学元素中，质量分数最多的是</p>  <table class=\"MsoNormalTable\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100.0%;border:solid white 1.0pt\" name=\"optionsTable\">   <tbody><tr>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">A．O元素</p>    </td>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">B．C元素</p>    </td>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">C．H元素</p>    </td>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">D．N元素</p>    </td>   </tr>  </tbody></table>  </div></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"<div class=\"doc_theme\">高中生物,细胞的分子组成与结构,组成细胞的分子</div>","qualityOrder":12,"questionId":34161362,"SimOrder":15,"solution":"<div class=\"doc_analysis\"><div>  <p class=\"MsoNormal\">植物体的组成元素中，有65%为氧元素，18%为碳元素，10%为氢元素，3%为氮元素。  </p>  </div></div>"}, {"answer":"<p><i>A</i></p>","content":"<dt><p><br />在组成植物体的化学元素中，占鲜重最多的是（&nbsp;&nbsp;&nbsp;&nbsp;）</p><table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tbody><tr><td width=\"25%\">A．氧元素 </td><td width=\"25%\">B．碳元素 </td><td width=\"25%\">C．氢元素 </td><td width=\"25%\">D．氮元素</td></tr></tbody></table><p></p></dt>","CreateTime":1430796865000,"groupId":1,"Knowledge":"NULL","qualityOrder":11,"questionId":32408406,"SimOrder":14,"solution":"<p><span class=\"parsing\">解析</span><i></i></p>"}, {"answer":"<div class=\"doc_answer\"><p>A</p></div>","content":"<div class=\"doc_question\"><div>  <p>在组成植物体的化学元素中，占鲜重最多的是（ ）</p>  <p>A．氧元素 B．碳元素 C．氢元素 D．氮元素</p>  </div></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"<div class=\"doc_theme\"></div>","qualityOrder":10,"questionId":34334114,"SimOrder":13,"solution":"<div class=\"doc_analysis\"><p class=\"MsoNormal\">略</p></div>"},{"answer":"<div>【答案】A</div>","content":"<div>【题文】在组成人体的化学元素中，占鲜重最多的是（&nbsp;&nbsp;&nbsp;&nbsp;）<table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td width=\"25%\">A．氧元素</td><td width=\"25%\">B．碳元素</td><td width=\"25%\">C．氢元素</td><td width=\"25%\">D．氮元素]</td></tr></table></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"","qualityOrder":16,"questionId":2928734,"SimOrder":12,"solution":"<div>【解析】略</div>"},{"answer":"<div>【答案】A</div>","content":"<div>【题文】在组成植物体的化学元素中，质量分数最多的是<table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td width=\"25%\">A．氧元素</td><td width=\"25%\">B．碳元素</td><td width=\"25%\">C．氢元素</td><td width=\"25%\">D．氮元素</td></tr></table></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"","qualityOrder":15,"questionId":3090812,"SimOrder":11,"solution":"<div>【解析】略</div>"},{"answer":"<p><i>A</i></p>","content":"<dt><p>在组成人体的化学元素中，占鲜重最多的是<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tbody><tr><td width=\"25%\">A．氧元素</td><td width=\"25%\">B．碳元素</td><td width=\"25%\">C．氢元素</td><td width=\"25%\">D．氮元素</td></tr></tbody></table><p></p></dt>","CreateTime":1430796865000,"groupId":1,"Knowledge":"NULL","qualityOrder":9,"questionId":32389843,"SimOrder":10,"solution":"<p><span class=\"parsing\">解析</span><i></i></p>"},{"answer":"<div class=\"doc_answer\"><p>A</p></div>","content":"<div class=\"doc_question\"><div>  <p>在组成人体的化学元素中，占鲜重最多的是（ ）</p>  <p>A．氧元素 B．碳元素 C．氢元素 D．氮元素]</p>  </div></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"<div class=\"doc_theme\"></div>","qualityOrder":8,"questionId":34322778,"SimOrder":9,"solution":"<div class=\"doc_analysis\"><p class=\"MsoNormal\">略</p></div>"},{"answer":"<div class=\"pt6\"><!--B6--><em></em>解：人体活细胞故为鲜重，则占细胞鲜重比例最大的元素是氧．<br/>故选：A．<!--E6--></div>","content":"<div class=\"pt1\"><!--B1--><span class=\"qseq\"></span>在组成人体的化学元素中，占鲜重最多的是（　　）<!--E1--></div><div class=\"pt2\"><!--B2--><table class=\"ques quesborder\" style=\"width:100%\"><tr><td class=\"selectoption\" style=\"width:23%\"><label class=\" s\">A．氧元素</label></td><td class=\"selectoption\" style=\"width:23%\"><label class=\"\">B．碳元素</label></td><td class=\"selectoption\" style=\"width:23%\"><label class=\"\">C．氢元素</label></td><td class=\"selectoption\" style=\"width:23%\"><label class=\"\">D．氮元素</label></td></tr></table><!--E2--></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"碳原子的结构特点","qualityOrder":1,"questionId":34464630,"SimOrder":8,"solution":"<div class=\"pt5\"><!--B5--><em></em>1、C、H、O、N、P、S这六种元素的含量占到了细胞总量的97%，称为主要元素．<b></b><br/>2、C、H、O、N基本元素占鲜重的比例从大到小的顺序是：O＞C＞H＞N；<br/>3、C、H、O、N基本元素占干重的比例从大到小的顺序是：C＞O＞N＞H．<b></b><!--E5--></div>"},{"answer":"<div>【答案】A</div>","content":"<div>在组成人体的化学元素中，占鲜重最多的是<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<table name=\"optionsTable\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td width=\"25%\">A．氧元素</td><td width=\"25%\">B．碳元素</td><td width=\"25%\">C．氢元素</td><td width=\"25%\">D．氮元素</td></tr></table></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"组成细胞的分子 第2章组成细胞的分子","qualityOrder":7,"questionId":36142530,"SimOrder":7,"solution":"<div>【解析】本题考查的是组成人体的化学元素的有关内容。在组成人体的化学元素中，占鲜重最多的是氧元素。A正确。故本题选A。</div>"},{"answer":"<div class=\"doc_answer\"><p>A</p></div>","content":"<div class=\"doc_question\"><div>  <p>在组成人体的化学元素中，占鲜重最多的是<u> </u></p>  <p>　　A．氧元素 B．碳元素 C．氢元素 D．氮元素</p>  </div></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"<div class=\"doc_theme\">考点：细胞的分子组成</div>","qualityOrder":6,"questionId":34336545,"SimOrder":6,"solution":"<div class=\"doc_analysis\"><p class=\"MsoNormal\">略</p></div>"},{"answer":"<div class=\"doc_answer\"><div>  <p class=\"MsoNormal\">A</p>  </div></div>","content":"<div class=\"doc_question\"><div>  <p class=\"MsoNormal\">在组成人体的化学元素中，占鲜重最多的是<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>  <table class=\"MsoNormalTable\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100.0%;border:solid white 1.0pt\" name=\"optionsTable\">   <tbody><tr>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">A．氧元素</p>    </td>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">B．碳元素</p>    </td>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">C．氢元素</p>    </td>    <td width=\"25%\" style=\"width:25.0%;border:solid white 1.0pt;padding:0cm 0cm 0cm 0cm\">    <p class=\"MsoNormal\">D．氮元素</p>    </td>   </tr>  </tbody></table>  </div></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"<div class=\"doc_theme\">高中生物,细胞的分子组成与结构,组成细胞的分子</div>","qualityOrder":5,"questionId":34069621,"SimOrder":5,"solution":"<div class=\"doc_analysis\"><div>  <p class=\"MsoNormal\">本题考查的是组成人体的化学元素的有关内容。在组成人体的化学元素中，占鲜重最多的是氧元素。A正确。故本题选A。 </p>  </div></div>"},{"answer":"解析：在组成生物体的大量元素中，C、H、O、N、S、P六种元素是组成细胞的主要元素，大约占细胞总量的97%；由组成细胞的主要元素示意图可知，氧元素占65%，碳元素占18%，氢元素占10%，氮元素占3%，磷元素占1.4%,硫元素占0.3%。所以组成生物体的化学元素中，质量分数最多的是氧元素。</P><P>答案：A","content":"在组成植物体的化学元素中，质量分数最多的是（　　）</P><P>A.氧元素</P><P>B.碳元素 </P><P>C.氢元素</P><P>D.氮元素</P><P>","CreateTime":1430796865000,"groupId":1,"Knowledge":"组成生物体的化学元素","qualityOrder":4,"questionId":35632900,"SimOrder":4,"solution":"NULL"},{"answer":"<div class=\"pt6\"><!--B6--><em></em>解：人体活细胞故为鲜重，则占细胞鲜重比例最大的元素是氧．<br/>故选：A．<!--E6--></div>","content":"<div class=\"pt1\"><!--B1--><span class=\"qseq\"></span>在组成人体活细胞的化学元素中，质量最多的是（　　）<!--E1--></div><div class=\"pt2\"><!--B2--><table class=\"ques quesborder\" style=\"width:100%\"><tr><td class=\"selectoption\" style=\"width:23%\"><label class=\" s\">A．氧元素</label></td><td class=\"selectoption\" style=\"width:23%\"><label class=\"\">B．碳元素</label></td><td class=\"selectoption\" style=\"width:23%\"><label class=\"\">C．氢元素</label></td><td class=\"selectoption\" style=\"width:23%\"><label class=\"\">D．氮元素</label></td></tr></table><!--E2--></div>","CreateTime":1430796865000,"groupId":1,"Knowledge":"碳原子的结构特点","qualityOrder":0,"questionId":34419968,"SimOrder":3,"solution":"<div class=\"pt5\"><!--B5--><em></em>1、C、H、O、N、P、S这六种元素的含量占到了细胞总量的97%，称为主要元素．<b></b><br/>2、C、H、O、N基本元素占鲜重的比例从大到小的顺序是：O＞C＞H＞N；<br/>3、C、H、O、N基本元素占干重的比例从大到小的顺序是：C＞O＞N＞H．<b></b><!--E5--></div>"}], "msg":"ok","status":"0"}.candidate_list || [];
+	</script>
+</body>
+</html>

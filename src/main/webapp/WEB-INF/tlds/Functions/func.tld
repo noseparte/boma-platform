@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib 
+    version="2.1" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+
+    <display-name>Date Format</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>func</short-name>
+    <uri>/WEB-INF/tlds/Functions</uri>
+
+    <function>
+        <name>formatDate</name>
+        <function-class>com.xmbl.ops.util.DateUtils</function-class>
+        <function-signature>String formatDate(java.util.Date)</function-signature>
+    </function>
+     <function>
+        <name>formatDateYMD</name>
+        <function-class>com.xmbl.ops.util.DateUtils</function-class>
+        <function-signature>String formatDate(java.util.Date,java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>parseArray</name>
+        <function-class>com.alibaba.fastjson.JSON</function-class>
+        <function-signature>com.alibaba.fastjson.JSONArray parseArray(java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>parseObject</name>
+        <function-class>com.alibaba.fastjson.JSON</function-class>
+        <function-signature>com.alibaba.fastjson.JSONObject parseObject(java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>Math.floor</name>
+        <function-class>java.lang.Math</function-class>
+        <function-signature>double floor(double)</function-signature>
+    </function>
+</taglib>

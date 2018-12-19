@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.data.Day1Retention" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.data.Day1Retention" >
+    <id column="channelid" property="channelid" jdbcType="VARCHAR" />
+    <id column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <id column="platfromid" property="platfromid" jdbcType="VARCHAR" />
+    <result column="newaccoutcount" property="newaccoutcount" jdbcType="BIGINT" />
+    <result column="day1retention" property="day1retention" jdbcType="BIGINT" />
+    <result column="day1retentionrate" property="day1retentionrate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    channelid, datetime, gameid, gameserverid, gameversion, platfromid, newaccoutcount, 
+    day1retention, day1retentionrate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.data.Day1Retention" >
+    select 
+    <include refid="Base_Column_List" />
+    from day1retention
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.data.Day1Retention" >
+    delete from day1retention
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.data.Day1Retention" >
+    insert into day1retention (channelid, datetime, gameid, 
+      gameserverid, gameversion, platfromid, 
+      newaccoutcount, day1retention, day1retentionrate
+      )
+    values (#{channelid,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, #{gameid,jdbcType=BIGINT}, 
+      #{gameserverid,jdbcType=BIGINT}, #{gameversion,jdbcType=VARCHAR}, #{platfromid,jdbcType=VARCHAR}, 
+      #{newaccoutcount,jdbcType=BIGINT}, #{day1retention,jdbcType=BIGINT}, #{day1retentionrate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.data.Day1Retention" >
+    insert into day1retention
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="platfromid != null" >
+        platfromid,
+      </if>
+      <if test="newaccoutcount != null" >
+        newaccoutcount,
+      </if>
+      <if test="day1retention != null" >
+        day1retention,
+      </if>
+      <if test="day1retentionrate != null" >
+        day1retentionrate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="platfromid != null" >
+        #{platfromid,jdbcType=VARCHAR},
+      </if>
+      <if test="newaccoutcount != null" >
+        #{newaccoutcount,jdbcType=BIGINT},
+      </if>
+      <if test="day1retention != null" >
+        #{day1retention,jdbcType=BIGINT},
+      </if>
+      <if test="day1retentionrate != null" >
+        #{day1retentionrate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.data.Day1Retention" >
+    update day1retention
+    <set >
+      <if test="newaccoutcount != null" >
+        newaccoutcount = #{newaccoutcount,jdbcType=BIGINT},
+      </if>
+      <if test="day1retention != null" >
+        day1retention = #{day1retention,jdbcType=BIGINT},
+      </if>
+      <if test="day1retentionrate != null" >
+        day1retentionrate = #{day1retentionrate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.data.Day1Retention" >
+    update day1retention
+    set newaccoutcount = #{newaccoutcount,jdbcType=BIGINT},
+      day1retention = #{day1retention,jdbcType=BIGINT},
+      day1retentionrate = #{day1retentionrate,jdbcType=VARCHAR}
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </update>
+           <select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from day1retention
+	   	<where> 
+	   	   <if test="gameid != null and gameid !=''">
+				AND gameid = #{gameid,jdbcType=BIGINT}
+			</if>
+			<if test="gameserverid != null and gameserverid !=''">
+				AND gameserverid = #{gameserverid,jdbcType=BIGINT}
+			</if>
+			<if test="channelid != null and channelid != ''">
+				AND channelid = #{channelid,jdbcType=VARCHAR}
+			</if>
+			<if test="platfromid != null and platfromid != ''">
+				AND platfromid = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="gameversion != null and gameversion != ''">
+				AND gameversion = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by datetime 
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from day1retention
+		<where>
+		<if test="gameid != null and gameid !=''">
+				AND gameid = #{gameid,jdbcType=BIGINT}
+			</if>
+			<if test="gameserverid != null and gameserverid !=''">
+				AND gameserverid = #{gameserverid,jdbcType=BIGINT}
+			</if>
+			<if test="channelid != null and channelid != ''">
+				AND channelid = #{channelid,jdbcType=VARCHAR}
+			</if>
+			<if test="platfromid != null and platfromid != ''">
+				AND platfromid = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="gameversion != null and gameversion != ''">
+				AND gameversion = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+</mapper>

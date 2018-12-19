@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.data.RegisterLog" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.data.RegisterLog" >
+    <id column="accountid" property="accountid" jdbcType="VARCHAR" />
+    <id column="channelid" property="channelid" jdbcType="VARCHAR" />
+    <id column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <id column="platfromid" property="platfromid" jdbcType="VARCHAR" />
+    <id column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="ts" property="ts" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="imei" property="imei" jdbcType="VARCHAR" />
+    <result column="imeiid" property="imeiid" jdbcType="VARCHAR" />
+    <result column="os" property="os" jdbcType="VARCHAR" />
+    <result column="device" property="device" jdbcType="VARCHAR" />
+    <result column="osversion" property="osversion" jdbcType="VARCHAR" />
+    <result column="resolution" property="resolution" jdbcType="VARCHAR" />
+    <result column="idaddress" property="idaddress" jdbcType="VARCHAR" />
+    <result column="playerid" property="playerid" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    accountid, channelid, datetime, gameid, gameserverid, gameversion, platfromid, uuid, 
+    type, ts, mac, imei, imeiid, os, device, osversion, resolution, idaddress, playerid, 
+    profession, createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.data.RegisterLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from register_log
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.data.RegisterLog" >
+    delete from register_log
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.data.RegisterLog" >
+    insert into register_log (accountid, channelid, datetime, 
+      gameid, gameserverid, gameversion, 
+      platfromid, uuid, type, 
+      ts, mac, imei, imeiid, 
+      os, device, osversion, 
+      resolution, idaddress, playerid, 
+      profession, createtime)
+    values (#{accountid,jdbcType=VARCHAR}, #{channelid,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, 
+      #{gameid,jdbcType=BIGINT}, #{gameserverid,jdbcType=BIGINT}, #{gameversion,jdbcType=VARCHAR}, 
+      #{platfromid,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{ts,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, #{imeiid,jdbcType=VARCHAR}, 
+      #{os,jdbcType=VARCHAR}, #{device,jdbcType=VARCHAR}, #{osversion,jdbcType=VARCHAR}, 
+      #{resolution,jdbcType=VARCHAR}, #{idaddress,jdbcType=VARCHAR}, #{playerid,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.data.RegisterLog" >
+    insert into register_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="platfromid != null" >
+        platfromid,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="imei != null" >
+        imei,
+      </if>
+      <if test="imeiid != null" >
+        imeiid,
+      </if>
+      <if test="os != null" >
+        os,
+      </if>
+      <if test="device != null" >
+        device,
+      </if>
+      <if test="osversion != null" >
+        osversion,
+      </if>
+      <if test="resolution != null" >
+        resolution,
+      </if>
+      <if test="idaddress != null" >
+        idaddress,
+      </if>
+      <if test="playerid != null" >
+        playerid,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null" >
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="platfromid != null" >
+        #{platfromid,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="imeiid != null" >
+        #{imeiid,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="osversion != null" >
+        #{osversion,jdbcType=VARCHAR},
+      </if>
+      <if test="resolution != null" >
+        #{resolution,jdbcType=VARCHAR},
+      </if>
+      <if test="idaddress != null" >
+        #{idaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.data.RegisterLog" >
+    update register_log
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="imeiid != null" >
+        imeiid = #{imeiid,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        os = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="osversion != null" >
+        osversion = #{osversion,jdbcType=VARCHAR},
+      </if>
+      <if test="resolution != null" >
+        resolution = #{resolution,jdbcType=VARCHAR},
+      </if>
+      <if test="idaddress != null" >
+        idaddress = #{idaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="playerid != null" >
+        playerid = #{playerid,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.data.RegisterLog" >
+    update register_log
+    set type = #{type,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      imeiid = #{imeiid,jdbcType=VARCHAR},
+      os = #{os,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      osversion = #{osversion,jdbcType=VARCHAR},
+      resolution = #{resolution,jdbcType=VARCHAR},
+      idaddress = #{idaddress,jdbcType=VARCHAR},
+      playerid = #{playerid,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR}
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  
+      <select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from register_log
+	   	<where>
+	     	<if test="accountid != null and accountid != ''">
+				accountid = #{accountid,jdbcType=VARCHAR}
+			</if>
+			<if test="uuid != null and uuid != ''">
+				AND uuid = #{uuid,jdbcType=VARCHAR}
+			</if>
+			<if test="gameid != null and gameid !=''">
+				AND gameid = #{gameid,jdbcType=BIGINT}
+			</if>
+			<if test="gameserverid != null and gameserverid !=''">
+				AND gameserverid = #{gameserverid,jdbcType=BIGINT}
+			</if>
+			<if test="channelid != null and channelid != ''">
+				AND channelid = #{channelid,jdbcType=VARCHAR}
+			</if>
+			<if test="platfromid != null and platfromid != ''">
+				AND platfromid = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="gameversion != null and gameversion != ''">
+				AND gameversion = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="imei != null and imei != ''">
+				AND imei = #{imei,jdbcType=VARCHAR}
+			</if>
+			<if test="imeiid != null and imeiid != ''">
+				AND imeiid = #{imeiid,jdbcType=VARCHAR}
+			</if>
+			<if test="playerid != null and playerid != ''">
+				AND playerid = #{playerid,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by datetime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from register_log
+		<where>
+		    <if test="accountid != null and accountid != ''">
+				accountid = #{accountid,jdbcType=VARCHAR}
+			</if>
+			<if test="uuid != null and uuid != ''">
+				AND uuid = #{uuid,jdbcType=VARCHAR}
+			</if>
+			<if test="gameid != null and gameid !=''">
+				AND gameid = #{gameid,jdbcType=BIGINT}
+			</if>
+			<if test="gameserverid != null and gameserverid !=''">
+				AND gameserverid = #{gameserverid,jdbcType=BIGINT}
+			</if>
+			<if test="channelid != null and channelid != ''">
+				AND channelid = #{channelid,jdbcType=VARCHAR}
+			</if>
+			<if test="platfromid != null and platfromid != ''">
+				AND platfromid = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="gameversion != null and gameversion != ''">
+				AND gameversion = #{gameversion,jdbcType=VARCHAR}
+			</if>
+			<if test="imei != null and imei != ''">
+				AND imei = #{imei,jdbcType=VARCHAR}
+			</if>
+			<if test="imeiid != null and imeiid != ''">
+				AND imeiid = #{imeiid,jdbcType=VARCHAR}
+			</if>
+			<if test="playerid != null and playerid != ''">
+				AND playerid = #{playerid,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+  
+</mapper>

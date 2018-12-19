@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.data.LoginLog" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.data.LoginLog" >
+    <id column="accountid" property="accountid" jdbcType="VARCHAR" />
+    <id column="channelid" property="channelid" jdbcType="VARCHAR" />
+    <id column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <id column="platfromid" property="platfromid" jdbcType="VARCHAR" />
+    <id column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="ts" property="ts" jdbcType="VARCHAR" />
+    <result column="playerid" property="playerid" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="online" property="online" jdbcType="VARCHAR" />
+    <result column="logintime" property="logintime" jdbcType="VARCHAR" />
+    <result column="logouttime" property="logouttime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    accountid, channelid, datetime, gameid, gameserverid, gameversion, platfromid, uuid, 
+    type, ts, playerid, profession, online, logintime, logouttime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.data.LoginLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from login_log
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.data.LoginLog" >
+    delete from login_log
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.data.LoginLog" >
+    insert into login_log (accountid, channelid, datetime, 
+      gameid, gameserverid, gameversion, 
+      platfromid, uuid, type, 
+      ts, playerid, profession, 
+      online, logintime, logouttime
+      )
+    values (#{accountid,jdbcType=VARCHAR}, #{channelid,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, 
+      #{gameid,jdbcType=BIGINT}, #{gameserverid,jdbcType=BIGINT}, #{gameversion,jdbcType=VARCHAR}, 
+      #{platfromid,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{ts,jdbcType=VARCHAR}, #{playerid,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
+      #{online,jdbcType=VARCHAR}, #{logintime,jdbcType=VARCHAR}, #{logouttime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.data.LoginLog" >
+    insert into login_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="platfromid != null" >
+        platfromid,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="playerid != null" >
+        playerid,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="online != null" >
+        online,
+      </if>
+      <if test="logintime != null" >
+        logintime,
+      </if>
+      <if test="logouttime != null" >
+        logouttime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null" >
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="platfromid != null" >
+        #{platfromid,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="online != null" >
+        #{online,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=VARCHAR},
+      </if>
+      <if test="logouttime != null" >
+        #{logouttime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.data.LoginLog" >
+    update login_log
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="playerid != null" >
+        playerid = #{playerid,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="online != null" >
+        online = #{online,jdbcType=VARCHAR},
+      </if>
+      <if test="logintime != null" >
+        logintime = #{logintime,jdbcType=VARCHAR},
+      </if>
+      <if test="logouttime != null" >
+        logouttime = #{logouttime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.data.LoginLog" >
+    update login_log
+    set type = #{type,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      playerid = #{playerid,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      online = #{online,jdbcType=VARCHAR},
+      logintime = #{logintime,jdbcType=VARCHAR},
+      logouttime = #{logouttime,jdbcType=VARCHAR}
+    where accountid = #{accountid,jdbcType=VARCHAR}
+      and channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  
+      <select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from login_log
+	   	<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by datetime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from login_log
+		<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+  
+</mapper>

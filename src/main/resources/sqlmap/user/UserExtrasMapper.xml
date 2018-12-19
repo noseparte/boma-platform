@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="user_extras" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.user.UserExtras" >
+    <id column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="gameid" property="gameid" jdbcType="VARCHAR" />
+    <result column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <result column="gameserver" property="gameserver" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="imei" property="imei" jdbcType="VARCHAR" />
+    <result column="imeiid" property="imeiid" jdbcType="VARCHAR" />
+    <result column="os" property="os" jdbcType="VARCHAR" />
+    <result column="osversion" property="osversion" jdbcType="VARCHAR" />
+    <result column="resolution" property="resolution" jdbcType="VARCHAR" />
+    <result column="device" property="device" jdbcType="VARCHAR" />
+    <result column="ipaddress" property="ipaddress" jdbcType="VARCHAR" />
+    <result column="onlinetype" property="onlinetype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userid, gameid, gameversion, gameserver, channel, uuid, mac, imei, imeiid, os, osversion, 
+    resolution, device, ipaddress, onlinetype
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_extras
+    where userid = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_extras
+    where userid = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.user.UserExtras" >
+    insert into user_extras (userid, gameid, gameversion, 
+      gameserver, channel, uuid, 
+      mac, imei, imeiid, 
+      os, osversion, resolution, 
+      device, ipaddress, onlinetype
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{gameid,jdbcType=VARCHAR}, #{gameversion,jdbcType=VARCHAR}, 
+      #{gameserver,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, 
+      #{mac,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, #{imeiid,jdbcType=VARCHAR}, 
+      #{os,jdbcType=VARCHAR}, #{osversion,jdbcType=VARCHAR}, #{resolution,jdbcType=VARCHAR}, 
+      #{device,jdbcType=VARCHAR}, #{ipaddress,jdbcType=VARCHAR}, #{onlinetype,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.user.UserExtras" >
+    insert into user_extras
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="gameserver != null" >
+        gameserver,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="imei != null" >
+        imei,
+      </if>
+      <if test="imeiid != null" >
+        imeiid,
+      </if>
+      <if test="os != null" >
+        os,
+      </if>
+      <if test="osversion != null" >
+        osversion,
+      </if>
+      <if test="resolution != null" >
+        resolution,
+      </if>
+      <if test="device != null" >
+        device,
+      </if>
+      <if test="ipaddress != null" >
+        ipaddress,
+      </if>
+      <if test="onlinetype != null" >
+        onlinetype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=VARCHAR},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="gameserver != null" >
+        #{gameserver,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="imeiid != null" >
+        #{imeiid,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="osversion != null" >
+        #{osversion,jdbcType=VARCHAR},
+      </if>
+      <if test="resolution != null" >
+        #{resolution,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinetype != null" >
+        #{onlinetype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.user.UserExtras" >
+    update user_extras
+    <set >
+      <if test="gameid != null" >
+        gameid = #{gameid,jdbcType=VARCHAR},
+      </if>
+      <if test="gameversion != null" >
+        gameversion = #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="gameserver != null" >
+        gameserver = #{gameserver,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="imeiid != null" >
+        imeiid = #{imeiid,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        os = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="osversion != null" >
+        osversion = #{osversion,jdbcType=VARCHAR},
+      </if>
+      <if test="resolution != null" >
+        resolution = #{resolution,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        ipaddress = #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinetype != null" >
+        onlinetype = #{onlinetype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.user.UserExtras" >
+    update user_extras
+    set gameid = #{gameid,jdbcType=VARCHAR},
+      gameversion = #{gameversion,jdbcType=VARCHAR},
+      gameserver = #{gameserver,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      uuid = #{uuid,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      imeiid = #{imeiid,jdbcType=VARCHAR},
+      os = #{os,jdbcType=VARCHAR},
+      osversion = #{osversion,jdbcType=VARCHAR},
+      resolution = #{resolution,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      ipaddress = #{ipaddress,jdbcType=VARCHAR},
+      onlinetype = #{onlinetype,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

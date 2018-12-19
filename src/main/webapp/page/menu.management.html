@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜单管理</title>
+	<link rel="stylesheet" href="../css/bootstrap/bootstrap.3.3.5.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<style type="text/css">
+		.ui-fold-table .fold-icon {
+			margin-right: 2px;
+		}
+		.ui-row-2 .fold-icon {
+			margin-left: 20px;
+		}
+		.ui-row-3 .fold-icon {
+			margin-left: 40px;
+		}
+		.ui-fold-table .fold-icon:before {
+			content: "\2212"; /*minus*/
+		}
+		.ui-fold-table .fold .fold-icon:before {
+			content: "\2b"; /*plus*/
+		}
+		.ui-fold-table .no-fold.fold-icon:before {
+			content: ""!important;
+		}
+	</style>
+	<script type="text/javascript">
+		var path = '<%=path %>';
+		var basePath = '../';
+		(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+	</script>
+</head>
+<body>
+	<header class="ui-page-header">
+		<div class="mini-title">当前位置：菜单管理</div>
+	</header>
+	<article class="container-fluid">
+		<button class="btn btn-primary">新增</button>
+		<button class="btn btn-danger">删除</button>
+		<table class="table table-hover table-bordered table-condensed mt8">
+			<thead>
+				<tr class="info">
+					<th class="min-w20">
+						<input type="checkbox" id="all-check">
+					</th>
+					<th class="min-w50">菜单名称</th>
+					<th class="min-w40">菜单类型</th>
+					<th class="min-w40">唯一KEY</th>
+					<th class="min-w40">URL地址</th>
+					<th class="min-w40">是否隐藏</th>
+					<th class="min-w40">描述</th>
+					<th class="min-w40">操作</th>
+				</tr>
+			</thead>
+			<tbody class="ui-fold-table">
+				<tr class="ui-row-1">
+					<td>
+						<input type="checkbox">
+					</td>
+					<td><div class="fold-icon glyphicon"></div>系统基础管理</td>
+					<td>0</td>
+					<td>system</td>
+					<td>system</td>
+					<td>否</td>
+					<td>系统基础管理</td>
+					<td>
+						<button class="btn btn-primary btn-xs edit-btn">编辑</button>
+					</td>
+				</tr>
+				<tr class="ui-row-2">
+					<td>
+						<input type="checkbox">
+					</td>
+					<td><div class="fold-icon glyphicon"></div>用户管理</td>
+					<td>1</td>
+					<td>system</td>
+					<td>system</td>
+					<td>否</td>
+					<td></td>
+					<td>
+						<button class="btn btn-primary btn-xs edit-btn">编辑</button>
+					</td>
+				</tr>
+				<tr class="ui-row-3">
+					<td>
+						<input type="checkbox">
+					</td>
+					<td><div class="fold-icon no-fold glyphicon"></div>新增用户</td>
+					<td>2</td>
+					<td>system</td>
+					<td>system</td>
+					<td>否</td>
+					<td>系统基础管理</td>
+					<td>
+						<button class="btn btn-primary btn-xs edit-btn">编辑</button>
+					</td>
+				</tr>
+				<tr class="ui-row-1 fold">
+					<td>
+						<input type="checkbox">
+					</td>
+					<td><div class="fold-icon glyphicon"></div>系统基础管理</td>
+					<td>0</td>
+					<td>system</td>
+					<td>system</td>
+					<td>否</td>
+					<td>系统基础管理</td>
+					<td>
+						<button class="btn btn-primary btn-xs edit-btn">编辑</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</article>
+</body>
+</html>

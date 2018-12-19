@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.organization.DataAnalysis" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.organization.DataAnalysis" >
+    <id column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="platformid" property="platformid" jdbcType="BIGINT" />
+    <result column="online_count" property="onlineCount" jdbcType="BIGINT" />
+    <result column="register_role_count" property="registerRoleCount" jdbcType="BIGINT" />
+    <result column="register_accout_count" property="registerAccoutCount" jdbcType="BIGINT" />
+    <result column="active_role_count" property="activeRoleCount" jdbcType="BIGINT" />
+    <result column="active_accout_count" property="activeAccoutCount" jdbcType="BIGINT" />
+    <result column="sumpay_role_count" property="sumpayRoleCount" jdbcType="BIGINT" />
+    <result column="sumpay_money" property="sumpayMoney" jdbcType="BIGINT" />
+    <result column="sumpay_money_count" property="sumpayMoneyCount" jdbcType="BIGINT" />
+    <result column="fispay_role_count" property="fispayRoleCount" jdbcType="BIGINT" />
+    <result column="fispay_money" property="fispayMoney" jdbcType="BIGINT" />
+    <result column="fispay_money_count" property="fispayMoneyCount" jdbcType="BIGINT" />
+    <result column="arppu" property="arppu" jdbcType="DECIMAL" />
+    <result column="arpu" property="arpu" jdbcType="DECIMAL" />
+    <result column="pur" property="pur" jdbcType="DECIMAL" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    createtime, gameid, gameserverid, platformid, online_count, register_role_count, 
+    register_accout_count, active_role_count, active_accout_count, sumpay_role_count, 
+    sumpay_money, sumpay_money_count, fispay_role_count, fispay_money, fispay_money_count, 
+    arppu, arpu, pur, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.organization.DataAnalysis" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_analysis
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.organization.DataAnalysis" >
+    delete from data_analysis
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.organization.DataAnalysis" >
+    insert into data_analysis (createtime, gameid, gameserverid, 
+      platformid, online_count, register_role_count, 
+      register_accout_count, active_role_count, active_accout_count, 
+      sumpay_role_count, sumpay_money, sumpay_money_count, 
+      fispay_role_count, fispay_money, fispay_money_count, 
+      arppu, arpu, pur, updatetime
+      )
+    values (#{createtime,jdbcType=TIMESTAMP}, #{gameid,jdbcType=BIGINT}, #{gameserverid,jdbcType=BIGINT}, 
+      #{platformid,jdbcType=BIGINT}, #{onlineCount,jdbcType=BIGINT}, #{registerRoleCount,jdbcType=BIGINT}, 
+      #{registerAccoutCount,jdbcType=BIGINT}, #{activeRoleCount,jdbcType=BIGINT}, #{activeAccoutCount,jdbcType=BIGINT}, 
+      #{sumpayRoleCount,jdbcType=BIGINT}, #{sumpayMoney,jdbcType=BIGINT}, #{sumpayMoneyCount,jdbcType=BIGINT}, 
+      #{fispayRoleCount,jdbcType=BIGINT}, #{fispayMoney,jdbcType=BIGINT}, #{fispayMoneyCount,jdbcType=BIGINT}, 
+      #{arppu,jdbcType=DECIMAL}, #{arpu,jdbcType=DECIMAL}, #{pur,jdbcType=DECIMAL}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.organization.DataAnalysis" >
+    insert into data_analysis
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="platformid != null" >
+        platformid,
+      </if>
+      <if test="onlineCount != null" >
+        online_count,
+      </if>
+      <if test="registerRoleCount != null" >
+        register_role_count,
+      </if>
+      <if test="registerAccoutCount != null" >
+        register_accout_count,
+      </if>
+      <if test="activeRoleCount != null" >
+        active_role_count,
+      </if>
+      <if test="activeAccoutCount != null" >
+        active_accout_count,
+      </if>
+      <if test="sumpayRoleCount != null" >
+        sumpay_role_count,
+      </if>
+      <if test="sumpayMoney != null" >
+        sumpay_money,
+      </if>
+      <if test="sumpayMoneyCount != null" >
+        sumpay_money_count,
+      </if>
+      <if test="fispayRoleCount != null" >
+        fispay_role_count,
+      </if>
+      <if test="fispayMoney != null" >
+        fispay_money,
+      </if>
+      <if test="fispayMoneyCount != null" >
+        fispay_money_count,
+      </if>
+      <if test="arppu != null" >
+        arppu,
+      </if>
+      <if test="arpu != null" >
+        arpu,
+      </if>
+      <if test="pur != null" >
+        pur,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="platformid != null" >
+        #{platformid,jdbcType=BIGINT},
+      </if>
+      <if test="onlineCount != null" >
+        #{onlineCount,jdbcType=BIGINT},
+      </if>
+      <if test="registerRoleCount != null" >
+        #{registerRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="registerAccoutCount != null" >
+        #{registerAccoutCount,jdbcType=BIGINT},
+      </if>
+      <if test="activeRoleCount != null" >
+        #{activeRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="activeAccoutCount != null" >
+        #{activeAccoutCount,jdbcType=BIGINT},
+      </if>
+      <if test="sumpayRoleCount != null" >
+        #{sumpayRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="sumpayMoney != null" >
+        #{sumpayMoney,jdbcType=BIGINT},
+      </if>
+      <if test="sumpayMoneyCount != null" >
+        #{sumpayMoneyCount,jdbcType=BIGINT},
+      </if>
+      <if test="fispayRoleCount != null" >
+        #{fispayRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="fispayMoney != null" >
+        #{fispayMoney,jdbcType=BIGINT},
+      </if>
+      <if test="fispayMoneyCount != null" >
+        #{fispayMoneyCount,jdbcType=BIGINT},
+      </if>
+      <if test="arppu != null" >
+        #{arppu,jdbcType=DECIMAL},
+      </if>
+      <if test="arpu != null" >
+        #{arpu,jdbcType=DECIMAL},
+      </if>
+      <if test="pur != null" >
+        #{pur,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.organization.DataAnalysis" >
+    update data_analysis
+    <set >
+      <if test="onlineCount != null" >
+        online_count = #{onlineCount,jdbcType=BIGINT},
+      </if>
+      <if test="registerRoleCount != null" >
+        register_role_count = #{registerRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="registerAccoutCount != null" >
+        register_accout_count = #{registerAccoutCount,jdbcType=BIGINT},
+      </if>
+      <if test="activeRoleCount != null" >
+        active_role_count = #{activeRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="activeAccoutCount != null" >
+        active_accout_count = #{activeAccoutCount,jdbcType=BIGINT},
+      </if>
+      <if test="sumpayRoleCount != null" >
+        sumpay_role_count = #{sumpayRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="sumpayMoney != null" >
+        sumpay_money = #{sumpayMoney,jdbcType=BIGINT},
+      </if>
+      <if test="sumpayMoneyCount != null" >
+        sumpay_money_count = #{sumpayMoneyCount,jdbcType=BIGINT},
+      </if>
+      <if test="fispayRoleCount != null" >
+        fispay_role_count = #{fispayRoleCount,jdbcType=BIGINT},
+      </if>
+      <if test="fispayMoney != null" >
+        fispay_money = #{fispayMoney,jdbcType=BIGINT},
+      </if>
+      <if test="fispayMoneyCount != null" >
+        fispay_money_count = #{fispayMoneyCount,jdbcType=BIGINT},
+      </if>
+      <if test="arppu != null" >
+        arppu = #{arppu,jdbcType=DECIMAL},
+      </if>
+      <if test="arpu != null" >
+        arpu = #{arpu,jdbcType=DECIMAL},
+      </if>
+      <if test="pur != null" >
+        pur = #{pur,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.organization.DataAnalysis" >
+    update data_analysis
+    set online_count = #{onlineCount,jdbcType=BIGINT},
+      register_role_count = #{registerRoleCount,jdbcType=BIGINT},
+      register_accout_count = #{registerAccoutCount,jdbcType=BIGINT},
+      active_role_count = #{activeRoleCount,jdbcType=BIGINT},
+      active_accout_count = #{activeAccoutCount,jdbcType=BIGINT},
+      sumpay_role_count = #{sumpayRoleCount,jdbcType=BIGINT},
+      sumpay_money = #{sumpayMoney,jdbcType=BIGINT},
+      sumpay_money_count = #{sumpayMoneyCount,jdbcType=BIGINT},
+      fispay_role_count = #{fispayRoleCount,jdbcType=BIGINT},
+      fispay_money = #{fispayMoney,jdbcType=BIGINT},
+      fispay_money_count = #{fispayMoneyCount,jdbcType=BIGINT},
+      arppu = #{arppu,jdbcType=DECIMAL},
+      arpu = #{arpu,jdbcType=DECIMAL},
+      pur = #{pur,jdbcType=DECIMAL},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </update>
+    <select id="searchListByDay" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from data_analysis
+		<where>
+			<if test="startTime != null">
+				and createtime &gt;= #{startTime,jdbcType=DATE}
+			</if>
+			<if test="endTime != null">
+				and createtime &lt;= #{endTime,jdbcType=DATE}
+			</if>
+			<if test="gameid != null">
+				and gameid = #{gameid,jdbcType=BIGINT}
+			</if>
+			<if test="gameserverid != null">
+				and gameserverid = #{gameserverid,jdbcType=BIGINT}
+			</if>
+			<if test="platformid != null">
+				and platformid = #{platformid,jdbcType=BIGINT}
+			</if>
+		</where>
+		order by createtime
+	</select>
+  
+</mapper>

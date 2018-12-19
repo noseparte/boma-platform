@@ -1,0 +1,118 @@
+html, body {
+	margin: 0;
+}
+body {
+	background-color: #f2f2f8;
+}
+#page {
+	width: 360px;
+	margin: 0 auto;
+	background: url(../image/join.us.jpg) no-repeat left top #f2f2f8;
+	background-size: 360px auto;
+	padding-top: 300px;
+}
+header {
+	font-size: 18px;
+	text-indent: 20px;
+}
+#description {
+	font-size: 17px;
+	margin: 0 15px;
+}
+#description span {
+	color: #ed5400;
+	font-weight: bold;
+}
+#description section {
+	font-weight: bold;
+	color: #000;
+	padding-bottom: 10px;
+}
+#survey {
+	font-size: 17px;
+	margin: 0 15px;
+	padding-bottom: 20px;
+}
+#survey .necessary {
+	color: red;
+}
+#survey section {
+	margin-bottom: 10px;
+}
+#survey input {
+	width: 100%;
+	height: 40px;
+	text-indent: 5px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+}
+#survey .error {
+	border: 1px solid #ff5a00;
+}
+#survey p {
+	margin: 0;
+	padding: 0;
+}
+#survey label {
+	line-height: 36px;
+}
+#survey select {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	background-color: #fff;
+}
+#survey .intro {
+	font-size: 14px;
+	margin-bottom: 5px;
+	color: #999;
+	line-height: 14px;
+}
+#survey .prov,
+#survey .city {
+	margin-bottom: 15px;
+}
+#survey button {
+	width: 100%;
+	height: 50px;
+	-webkit-appearance: none;
+	font-size: 18px;
+	border-radius: 5px;
+	border: none;
+	background-color: #008aff;
+	color: #fff;
+}
+#result {
+	width: 360px;
+	margin: 0 auto;
+	background-color: #f2f2f8;
+}
+#result p {
+	margin: 0;
+}
+#success,
+#fail {
+	padding-top: 120px;
+	margin: 0 20px;
+	line-height: 28px;
+	font-size: 22px;
+}
+#success .title,
+#fail .title {
+	background: url(../image/icon.sprite.png) no-repeat 20px 0;
+	background-size: 91px auto;
+	height: 100px;
+	line-height: 100px;
+	text-indent: 130px;
+	font-size: 30px;
+	margin-bottom: 5px;
+}
+#fail .title {
+	background-position: 20px -154px;
+}

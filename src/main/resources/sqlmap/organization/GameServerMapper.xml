@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.organization.GameServer" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.organization.GameServer" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="serverId" property="serverid" jdbcType="BIGINT" />
+    <result column="serverName" property="servername" jdbcType="VARCHAR" />
+    <result column="serverIp" property="serverip" jdbcType="VARCHAR" />
+    <result column="serverPort" property="serverport" jdbcType="VARCHAR" />
+    <result column="creatTime" property="creattime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serverId, serverName, serverIp, serverPort, creatTime, status, updateTime, operator
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from game_server
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from game_server
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.organization.GameServer" >
+    insert into game_server (id, serverId, serverName, 
+      serverIp, serverPort, creatTime, 
+      status, updateTime, operator
+      )
+    values (#{id,jdbcType=BIGINT}, #{serverid,jdbcType=BIGINT}, #{servername,jdbcType=VARCHAR}, 
+      #{serverip,jdbcType=VARCHAR}, #{serverport,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=TINYINT}, #{updatetime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.organization.GameServer" >
+    insert into game_server
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serverid != null" >
+        serverId,
+      </if>
+      <if test="servername != null" >
+        serverName,
+      </if>
+      <if test="serverip != null" >
+        serverIp,
+      </if>
+      <if test="serverport != null" >
+        serverPort,
+      </if>
+      <if test="creattime != null" >
+        creatTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="serverid != null" >
+        #{serverid,jdbcType=BIGINT},
+      </if>
+      <if test="servername != null" >
+        #{servername,jdbcType=VARCHAR},
+      </if>
+      <if test="serverip != null" >
+        #{serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="serverport != null" >
+        #{serverport,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateIfNecessary" parameterType="com.xmbl.ops.model.organization.GameServer" >
+    update game_server
+    <set >
+      <if test="serverid != null" >
+        serverId = #{serverid,jdbcType=BIGINT},
+      </if>
+      <if test="servername != null" >
+        serverName = #{servername,jdbcType=VARCHAR},
+      </if>
+      <if test="serverip != null" >
+        serverIp = #{serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="serverport != null" >
+        serverPort = #{serverport,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        creatTime = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.organization.GameServer" >
+    update game_server
+    set serverId = #{serverid,jdbcType=BIGINT},
+      serverName = #{servername,jdbcType=VARCHAR},
+      serverIp = #{serverip,jdbcType=VARCHAR},
+      serverPort = #{serverport,jdbcType=VARCHAR},
+      creatTime = #{creattime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="searchCount" resultType="long">
+		select
+		count(1)
+		from game_server
+		<where>
+		<if test="serverId != null ">
+			serverId = #{serverId,jdbcType=BIGINT}
+		</if>
+		<if test="serverName != null and serverName != ''">
+			AND serverName = #{serverName,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null ">
+			AND status = #{status,jdbcType=TINYINT}
+		</if>
+		</where>
+	   </select>
+		<select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from game_server
+	   	<where>
+		<if test="serverId != null ">
+			serverId = #{serverId,jdbcType=BIGINT}
+		</if>
+		<if test="serverName != null and serverName != ''">
+			AND serverName = #{serverName,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null ">
+			AND status = #{status,jdbcType=TINYINT}
+		</if>
+		</where>
+		order by creatTime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchGameServerList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from game_server
+	   	<where>
+		<if test="serverId != null ">
+			serverId = #{serverId,jdbcType=BIGINT}
+		</if>
+		<if test="serverName != null and serverName != ''">
+			AND serverName = #{serverName,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null ">
+			AND status = #{status,jdbcType=TINYINT}
+		</if>
+		</where>
+		order by creatTime desc
+	</select>
+</mapper>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.app.AppVersion" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.app.AppVersion" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="project" property="project" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="desc_info" property="desc_info" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_by" property="create_by" jdbcType="VARCHAR" />
+    <result column="update_by" property="update_by" jdbcType="VARCHAR" />
+    <result column="create_date" property="create_date" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="update_date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id,project,channel,version,desc_info,status,create_by,update_by,create_date,update_date
+  </sql>
+  
+  <select id="findCnt"  parameterType="com.xmbl.ops.model.app.AppVersion"  resultType="long" >
+  	select 
+    count(1)
+    from app_version
+   	<where>
+		<if test="project != null ">
+			and project  =  #{project, jdbcType=VARCHAR}
+		</if>
+		<if test="channel != null ">
+			and channel  =  #{channel, jdbcType=VARCHAR}
+		</if>
+		<if test="status != null ">
+			and status  =  #{status, jdbcType=INTEGER}
+		</if>
+	</where>
+  </select>
+    
+  <select id="findLst"  parameterType="com.xmbl.ops.model.app.AppVersion"  resultMap="BaseResultMap" >
+  	select 
+    <include refid="Base_Column_List" />
+    from app_version
+  	<where>
+		<if test="project != null ">
+			and project  =  #{project, jdbcType=VARCHAR}
+		</if>
+		<if test="channel != null ">
+			and channel  =  #{channel, jdbcType=VARCHAR}
+		</if>
+		<if test="status != null ">
+			and status  =  #{status, jdbcType=INTEGER}
+		</if>
+	</where>
+	
+	<if test="sort_type != null  and sort != null ">
+		order by  create_date desc
+	</if>
+	
+	<if test="page != null and size != null">
+		limit #{page,jdbcType=INTEGER},#{size,jdbcType=INTEGER};
+	</if>
+  </select> 
+   
+  <select id="findById"  parameterType="com.xmbl.ops.model.app.AppVersion"  resultMap="BaseResultMap" >
+  	select 
+    <include refid="Base_Column_List" />
+    from app_version
+  	<where>
+		<if test="id != null ">
+			and id  =  #{id, jdbcType=VARCHAR}
+		</if>
+	</where>
+  </select>  
+  
+  <update id ="updById"  parameterType="com.xmbl.ops.model.app.AppVersion"  >
+  		update app_version 
+  		<set>
+  			<if test="update_by !=null">
+  				    update_by = #{update_by,jdbcType=VARCHAR},
+  			</if>
+  			<if test="update_date !=null">
+  				update_date = #{update_date,jdbcType=TIMESTAMP},
+  			</if>
+  			<if test="project !=null">
+  				project = #{project,jdbcType=VARCHAR},
+  			</if>
+  			<if test="channel !=null">
+  				channel = #{channel,jdbcType=VARCHAR},
+  			</if>
+  			<if test="version !=null">
+  				version = #{version,jdbcType=VARCHAR},
+  			</if>
+  			<if test="desc_info !=null">
+  				desc_info = #{desc_info,jdbcType=VARCHAR},
+  			</if>
+  			<if test="status !=null">
+  				status = #{status,jdbcType=INTEGER},
+  			</if>
+  		</set>
+  		<where>
+  			<if test="id !=null">
+  				and id = #{id,jdbcType=VARCHAR}
+  			</if>
+  		</where>
+  </update>
+  
+  <insert id ="insertBy" parameterType="com.xmbl.ops.model.app.AppVersion" >
+  	insert into app_version 
+  	<trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="create_by != null" >
+        create_by,
+      </if>
+      <if test="create_date != null" >
+        create_date,
+      </if>
+      <if test="update_by != null" >
+        update_by,
+      </if>
+      <if test="update_date != null" >
+        update_date,
+      </if>
+      <if test="project != null" >
+        project,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="desc_info != null" >
+        desc_info,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null" >
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null" >
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null" >
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_date != null" >
+        #{update_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="project != null" >
+        #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="desc_info != null" >
+        #{desc_info,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="com.xmbl.ops.model.app.AppVersion" >
+  	delete from app_version 
+  	where 
+  	id =  #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <select id ="selectLastest" parameterType="com.xmbl.ops.model.app.AppVersion"  resultMap="BaseResultMap" >
+  	select 
+  	    <include refid="Base_Column_List" />
+    from app_version
+    	<where>
+    		<if test="project !=null">
+  				and project = #{project,jdbcType=VARCHAR}
+  			</if>
+  			<if test="channel !=null">
+  				and channel = #{channel,jdbcType=VARCHAR}
+  			</if>
+  			<if test="status !=null">
+  				and status = #{status,jdbcType=INTEGER}
+  			</if>
+    	</where>
+		order by  create_date  desc
+		limit 0,1;
+    	
+  </select>
+</mapper>

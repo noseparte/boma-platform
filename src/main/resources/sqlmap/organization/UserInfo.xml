@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.organization.UserInfo" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.organization.UserInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_key" property="userKey" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="groupname" property="groupname" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="log_level" property="logLevel" jdbcType="INTEGER" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />  
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />  
+    <result column="bank_subbranch" property="bankSubbranch" jdbcType="VARCHAR" /> 
+    <result column="bank_card" property="bankCard" jdbcType="VARCHAR" /> 
+    <result column="readid" property="readid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    user_info.id, user_key, user_name, user_mobile, password, role, groupname, email, status, log_level, team_id, 
+    create_time,update_time,operator,id_number,bank,province,city,county,bank_subbranch,bank_card, readid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.organization.UserInfo" >
+    insert into user_info (id, user_key, user_name, user_mobile, 
+      password, role, groupname, 
+      email, status, log_level, 
+      team_id, create_time)
+    values (#{id,jdbcType=INTEGER}, #{userKey,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userMobile,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{logLevel,jdbcType=INTEGER}, 
+      #{teamId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.organization.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userKey != null" >
+        user_key,
+      </if>
+      <if test="userName!= null" >
+        user_name,
+      </if>
+      <if test="userMobile != null" >
+        user_mobile,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="groupname != null" >
+        groupname,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="logLevel != null" >
+        log_level,
+      </if>
+      <if test="teamId != null and teamId >= 0" >
+        team_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>   
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userKey != null" >
+        #{userKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null" >
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="logLevel != null" >
+        #{logLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null and teamId >= 0" >
+        #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateIfNecessary" parameterType="com.xmbl.ops.model.organization.UserInfo" >
+    update user_info
+    <set >
+      <if test="userKey != null" >
+        user_key = #{userKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null and password != ''" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null" >
+        groupname = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="logLevel != null" >
+        log_level = #{logLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null and teamId >= 0" >
+        team_id = #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+       operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+       id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+       bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+       province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+       city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+       county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubbranch != null" >
+       bank_subbranch = #{bankSubbranch,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null" >
+       bank_card = #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="readid != null" >
+        readid = #{readid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateUserInfoByUserKey" parameterType="com.xmbl.ops.model.organization.UserInfo" >
+    update user_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null" >
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null and password != ''" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null" >
+        groupname = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="logLevel != null" >
+        log_level = #{logLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null and teamId >= 0" >
+        team_id = #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+       operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+       id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+       bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+       province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+       city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+       county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubbranch != null" >
+       bank_subbranch = #{bankSubbranch,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null" >
+       bank_card = #{bankCard,jdbcType=VARCHAR},
+      </if>
+    </set>
+     <if test="userKey != null" >
+         where  user_key = #{userKey,jdbcType=VARCHAR}
+    </if>
+  </update>
+  <update id="updateUserInfoPassword" parameterType="com.xmbl.ops.model.organization.UserInfo" >
+    update user_info
+    <set >
+      <if test="password != null and password != ''" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+       operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.organization.UserInfo" >
+    update user_info
+    set user_key = #{userKey,jdbcType=VARCHAR},
+      user_mobile = #{userMobile,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR},
+      groupname = #{groupname,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      log_level = #{logLevel,jdbcType=INTEGER},
+      team_id = #{teamId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByUserAndPassword" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_info 
+		<where>
+		        status = 0
+			<if test="userKey != null and userKey != ''">
+				AND user_key = #{userKey,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				AND password = #{password,jdbcType=VARCHAR}
+			</if>	
+		</where>
+	</select>
+	
+	  <select id="selectByUserKey" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_info
+		<where>
+			<if test="userKey != null and userKey != ''">
+				user_key = #{userKey,jdbcType=VARCHAR}
+			</if>	
+		</where>
+	</select>
+	  <select id="selectByRecognitionUserKey" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_info
+		<where>
+			<if test="userKey != null and userKey != ''">
+				user_key = #{userKey,jdbcType=VARCHAR}
+			</if>	
+		</where>
+	</select>
+	
+	 <select id="selectByUserId" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_info
+		<where>
+			<if test="id != null">
+				user_info.id = #{id,jdbcType=VARCHAR}
+			</if>	
+		</where>
+	</select>
+
+	
+   <select id="selectByUserMobile" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_info
+		<where>
+			<if test="userMobile != null and userMobile != ''">
+				user_mobile = #{userMobile,jdbcType=VARCHAR}
+			</if>	
+		</where>
+	</select>
+	
+	<select id="selectOneByUserkey" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_info
+		<where>
+			<if test="userKey != null and userKey != ''">
+				user_key = #{userKey,jdbcType=VARCHAR}
+			</if>	
+		</where>
+	</select>
+  	<select id="searchLimitList" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List" />
+    from user_info
+	  where user_info.id > #{id,jdbcType=BIGINT}
+	  <if test="limit != null">
+		limit #{limit};
+	  </if> 
+	</select>	
+  	<select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from user_info
+	   	<where>
+			<if test="userKey != null and userKey != ''">
+				user_key = #{userKey,jdbcType=VARCHAR}
+			</if>
+			<if test="groupName != null and groupName != ''">
+				AND groupName = #{groupName,jdbcType=VARCHAR}
+			</if>
+			<if test="teamId != null and teamId != ''">
+				AND team_id = #{teamId,jdbcType=BIGINT}
+			</if>
+			<if test="role != null and role != ''">
+				AND role = #{role,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null and status != ''">
+				AND status = #{status,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND create_time &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by create_time desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from user_info
+		<where>
+			<if test="userKey != null and userKey != ''">
+				user_key = #{userKey,jdbcType=VARCHAR}
+			</if>
+			<if test="groupName != null and groupName != ''">
+				AND groupName = #{groupName,jdbcType=VARCHAR}
+			</if>
+			<if test="teamId != null and teamId != ''">
+				AND team_id = #{teamId,jdbcType=BIGINT}
+			</if>
+			<if test="role != null and role != ''">
+				AND role = #{role,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null and status != ''">
+				AND status = #{status,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND create_time &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+		<select id="searchTeamIdCount" resultType="long">
+		select
+		count(1)
+		from user_info
+		<where>
+			<if test="teamId != null">
+				AND team_id = #{teamId,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	<select id="canCaptainList" resultMap="BaseResultMap">
+		select
+		id, user_key, user_name
+		<!-- from user_info where team_id is null and groupname = #{datizu,jdbcType=VARCHAR} order by user_name -->
+        from user_info where team_id is null and (groupname = #{datizu,jdbcType=VARCHAR} or groupname = #{tdatizu,jdbcType=VARCHAR} )order by user_name
+	</select>
+	
+	<select id="getUsersListByTeamId" resultMap="BaseResultMap">
+		select
+		id, user_key, user_name
+		from user_info 
+		<where>
+			<if test="teamId != null">
+				AND team_id = #{teamId,jdbcType=BIGINT}
+			</if>
+		</where>
+		order by user_name
+	</select>
+</mapper>

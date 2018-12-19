@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.data.OnlinecountLog" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.data.OnlinecountLog" >
+    <id column="channelid" property="channelid" jdbcType="VARCHAR" />
+    <id column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <id column="platfromid" property="platfromid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="ts" property="ts" jdbcType="VARCHAR" />
+    <result column="onlinecount" property="onlinecount" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    channelid, datetime, gameid, gameserverid, gameversion, platfromid, type, ts, onlinecount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.data.OnlinecountLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinecount_log
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.data.OnlinecountLog" >
+    delete from onlinecount_log
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.data.OnlinecountLog" >
+    insert into onlinecount_log (channelid, datetime, gameid, 
+      gameserverid, gameversion, platfromid, 
+      type, ts, onlinecount
+      )
+    values (#{channelid,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, #{gameid,jdbcType=BIGINT}, 
+      #{gameserverid,jdbcType=BIGINT}, #{gameversion,jdbcType=VARCHAR}, #{platfromid,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{ts,jdbcType=VARCHAR}, #{onlinecount,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.data.OnlinecountLog" >
+    insert into onlinecount_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="platfromid != null" >
+        platfromid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="onlinecount != null" >
+        onlinecount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="platfromid != null" >
+        #{platfromid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinecount != null" >
+        #{onlinecount,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.data.OnlinecountLog" >
+    update onlinecount_log
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinecount != null" >
+        onlinecount = #{onlinecount,jdbcType=BIGINT},
+      </if>
+    </set>
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.data.OnlinecountLog" >
+    update onlinecount_log
+    set type = #{type,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      onlinecount = #{onlinecount,jdbcType=BIGINT}
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+  </update>
+  
+        <select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from onlinecount_log
+	   	<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by datetime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from onlinecount_log
+		<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+  
+  
+</mapper>

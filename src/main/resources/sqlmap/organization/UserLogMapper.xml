@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.organization.UserLog" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.organization.UserLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="operation" property="operation" jdbcType="VARCHAR" />
+    <result column="log_level" property="logLevel" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, login_name, login_ip, createTime, updateTime, operation, log_level
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.organization.UserLog" >
+    insert into user_log (id, login_name, login_ip, 
+      createTime, updateTime, operation, 
+      log_level)
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{operation,jdbcType=VARCHAR}, 
+      #{logLevel,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.organization.UserLog" >
+    insert into user_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginIp != null" >
+        login_ip,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="operation != null" >
+        operation,
+      </if>
+      <if test="logLevel != null" >
+        log_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null" >
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="logLevel != null" >
+        #{logLevel,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.organization.UserLog" >
+    update user_log
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null" >
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operation != null" >
+        operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="logLevel != null" >
+        log_level = #{logLevel,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.organization.UserLog" >
+    update user_log
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      login_ip = #{loginIp,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      operation = #{operation,jdbcType=VARCHAR},
+      log_level = #{logLevel,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from user_log
+		<where>
+		<if test="userKey != null and userKey != ''">
+			login_name = #{userKey,jdbcType=VARCHAR}
+		</if>
+		<if test="startDate != null">
+			AND createTime &gt;= #{startDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endDate != null">
+			AND createTime &lt;= #{endDate,jdbcType=TIMESTAMP}
+		</if>
+		</where>
+	</select>
+		<select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from user_log
+	   	<where>
+			<if test="userKey != null and userKey != ''">
+				login_name = #{userKey,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null">
+				AND createTime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND createTime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by createTime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+</mapper>

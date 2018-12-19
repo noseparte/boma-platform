@@ -1,0 +1,109 @@
+mixin extraStyle(filename)
+	link(href=filename, rel="stylesheet", type="text/css")
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		title 数据可视化
+		+extraStyle("../css/bootstrap/bootstrap.3.3.5.min.css")
+		+extraStyle("../css/common_151030.css")
+		style(type="text/css").
+			.line-container {
+				height: 400px;
+			}
+		script(type="text/javascript").
+			var path = '<%=path %>';
+			var basePath = '../';
+			(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+	body
+		header.ui-page-header
+				.mini-title 数据可视化
+		.panel.panel-default
+			#count-container.panel-body.line-container
+		.panel.panel-default
+			#percent-container.panel-body.line-container
+		script(type="text/javascript").
+			MX.load({
+				js: 'lib/sea',
+				version: '151124',
+				success: function() {
+					seajs.use(['lib/jquery', 'lib/highcharts', 'util/ajaxPromise'], function($, highcharts, ajaxPromise) {
+						ajaxPromise({
+							url: window.basePath + 'confidential/querylogCountSearch',
+							type: 'GET',
+							dataType: 'json'
+						}).then(function(data) {
+							var result = data.result;
+							$('#count-container').highcharts({
+								chart: {
+									zoomType: 'x'
+								},
+								title: {
+									text: 'Query Count'
+								},
+								subtitle: {
+									text: 'Source: Cassandra DB'
+								},
+								xAxis: {
+									categories: result.dates
+								},
+								yAxis: {
+									gridLineDashStyle: 'loaddash',
+									title: {
+										text: 'Counts:'
+									}
+								},
+								legend: {
+									layout: 'vertical',
+									align: 'right',
+									verticalAlign: 'middle',
+									borderWidth: 1
+								},
+								series: [{
+									name: 'query_count',
+									data: result.queryCounts
+								}]
+							});
+							$('#percent-container').highcharts({
+								chart: {
+									zoomType: 'x'
+								},
+								title: {
+									text: 'Other Count Percentage'
+								},
+								subtitle: {
+									text: 'Source: Cassandra DB'
+								},
+								xAxis: {
+									categories: result.dates
+								},
+								yAxis: {
+									gridLineDashStyle: 'loaddash',
+									title: {
+										text: 'Counts:'
+									}
+								},
+								legend: {
+									layout: 'vertical',
+									align: 'right',
+									verticalAlign: 'middle',
+									borderWidth: 1
+								},
+								series: [{
+									name: 'contain_error_count',
+									data: result.containErrorCountRates
+								}, {
+									name: 'orc_error_count',
+									data: result.orcErrorCountRates
+								}, {
+									name: 'score_count',
+									data: result.scoreCountRates
+								}, {
+									name: 'subject_error_count',
+									data: result.subjectErrorCountRates
+								}]
+							});
+						});
+					});
+				}
+			});

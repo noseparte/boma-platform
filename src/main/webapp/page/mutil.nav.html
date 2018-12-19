@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多级导航</title>
+	<link rel="stylesheet" href="../css/bootstrap/bootstrap.3.3.5.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<style type="text/css">
+		.index-container {
+			height: 100%;
+			padding-top: 50px
+		}
+		.ui-sidebar {
+			width: 230px;
+			height: 100%;
+			background: #2e3338;
+		}
+		.ui-nav li>a {
+			color: #777;
+			border-top: 1px solid rgba(255,255,255,0.05);
+		}
+		.ui-nav li>a:hover, .ui-nav li>a:focus{
+			background: #59646e;
+			color: #ccc;
+		}
+		.ui-nav li>a>i{
+			width: 40px;
+			line-height: 40px;
+			float: left;
+			border-right: 1px solid rgba(255,255,255,0.05);
+			margin: -11px 10px -11px -15px;
+			text-align: center;
+		}
+		.ui-nav-1>a>.glyphicon:before {
+			content: "\e114"; /*chevron-down*/
+		}
+		.ui-nav-1.unfold>a>.glyphicon:before {
+			content: "\e113"; /*chevron-up*/
+		}
+		.ui-nav-2>a>.glyphicon:before {
+			content: "\e080"; /*chevron-right*/
+		}
+		.ui-nav-2.unfold>a>.glyphicon:before {
+			content: "\e079"; /*chevron-left*/
+		}
+		.ui-nav-3>a>.glyphicon:before {
+			content: "\e144"; /*link*/
+		}
+	</style>
+	<script type="text/javascript">
+		var path = '<%=path %>';
+		var basePath = '../';
+		(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+	</script>
+</head>
+<body>
+	<header class="navbar navbar-default navbar-fixed-top">
+		<nav class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="">
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</a>
+				</li>
+				<li>
+					<a href="">学习宝<span class="bold">题库运营平台</span></a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="index-container">
+		<aside class="ui-sidebar">
+			<nav class="ui-nav">
+				<ul class="nav nav-stacked" id="nav">
+					<li class="ui-nav-1 active" data-index="1">
+						<a href="#">
+							<i class="glyphicon"></i>
+							<span>Parent1</span>
+						</a>
+					</li>
+					<li class="ui-nav-2" data-index="1-1" style="display:none">
+						<a href="#">
+							<i class="glyphicon"></i>
+							<span>Child1</span>
+						</a>
+					</li>
+					<li class="ui-nav-3" data-index="1-1-1" data-url="tiku_ops/tranops/tranOpsAdminEditSearch" style="display:none">
+						<a href="#">
+							<i class="glyphicon"></i>
+							<span>GrandChild1</span>
+						</a>
+					</li>
+					<li class="ui-nav-1" data-index="2">
+						<a href="#">
+							<i class="glyphicon"></i>
+							<span>Parent2</span>
+						</a>
+					</li>
+					<li class="ui-nav-2" data-index="2-1" style="display:none">
+						<a href="#">
+							<i class="glyphicon"></i>
+							<span>Child2</span>
+						</a>
+					</li>
+					<li class="ui-nav-3" data-index="2-1-1" data-url="tiku_ops/tranops/tranOpsAdminEditSearch" style="display:none">
+						<a href="#">
+							<i class="glyphicon"></i>
+							<span>GrandChild2</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<article></article>
+	</section>
+	<script type="text/javascript">
+		MX.load({
+			js: 'lib/sea',
+			version: '150803a',
+			success: function() {
+				seajs.use(['lib/jquery'], function($) {
+					var nav = $('#nav'), items = nav.children(), sameLevelIndex, curUnfold, curUnfoldIndex, childReg;
+					nav.on('click', '.ui-nav-1,.ui-nav-2', function(e) {
+						var el = $(this), index;
+						index = el.data('index') + '';
+						if(el.hasClass('unfold')) {
+							// 收起子节点
+							items.filter('[data-index^="' + index + '-"]').hide().removeClass('unfold');
+						} else {
+							// 收起同级展开项
+							sameLevelReg = new RegExp(index.replace(/\d+$/, '') + '\\d+');
+							curUnfold = items.filter(function(i) {
+								var item = $(this);
+								return item.hasClass('unfold') && sameLevelReg.test(item.data('index') + '');
+							});
+							if(curUnfold[0]) {
+								curUnfoldIndex = '' + curUnfold.data('index');
+								items.filter('[data-index^="' + curUnfoldIndex + '-"]').hide().removeClass('unfold');
+								curUnfold.removeClass('unfold');
+							}
+							// 展开子节点
+							childReg = new RegExp('^' + index + '-\\d+$');
+							items.filter(function(i) {
+								var item = $(this);
+								return childReg.test(item.data('index') + '');
+							}).show();
+						}
+						el.toggleClass('unfold');
+					}).on('click', '.ui-nav-3', function(e) {
+						console.log('打开页面', $(this).data('url'));
+					});
+				});
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{ 
+	projects: [
+		// 工程
+		{
+			name: "sea", //工程名
+			target: "./out/sea.js", //输出文件
+			include: [
+				"../../lib/sea.js",
+				"../../lib/sea.config.js" 
+			]// 包含文件 按顺序填写,工程名对应的文件必须有 
+		}
+	], 
+	level: 0, 
+	shrink: false, 
+	encode: "utf-8", 
+	//编码 
+	comment: "Tencent News App Team" 
+}

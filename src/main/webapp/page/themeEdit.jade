@@ -1,0 +1,104 @@
+mixin extraStyle(filename)
+	link(href="filename", rel="stylesheet", type="text/css")
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		title 主题编辑页
+		+extraStyle("../css/bootstrap/bootstrap.3.3.5.min.css")
+		+extraStyle("../css/common_151030.css")
+		style(type="text/css").
+			.theme-preview-zone {
+				width: 320px;
+				padding: 15px 0;
+			}
+			.recommend-banner {
+				width: 100px;
+				height: 100px;
+				background-color: #3d4d0f;
+			}
+			.recommend-container {
+				margin: 5px; 
+			}
+			.special-banner {
+				width: 320px;
+				height: 100px;
+				background-color: #3d4d0f;
+			}
+			.special-description {
+				padding: 10px 15px;
+				text-indent: 2em;
+				color: #231815;
+				font-size: 14px;
+			}
+			.special-value {
+				height: 34px;
+				line-height: 34px;
+			}
+		script(type="text/javascript").
+			var path = '<%=path %>';
+			var basePath = '../';
+			(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+		body
+			header.ui-page-header
+				.mini-title 主题详情
+			section.ui-flex-between
+				article.theme-edit-container.flex-grow.form-horizontal.panel.panel-default
+					.panel-heading 主题编辑
+					.panel-body
+						.form-group
+							label.col-sm-1.control-label 关联专题
+							.col-sm-11.pl0.special-value
+								a(href="#") 专题名称
+						.form-group
+							label.col-sm-1.control-label 年级
+							.col-sm-11.pl0.special-value 一年级、二年级、三年级
+						.form-group
+							label.col-sm-1.control-label 学科
+							.col-sm-11.pl0.special-value 数学、物理、化学
+						.form-group
+							label.col-sm-1.control-label 知识点
+							.col-sm-11.pl0.special-value 函数、三角函数、直线
+						.form-group
+							label.col-sm-1.control-label 主题名称
+							.col-sm-11.pl0
+								input.theme-name.form-control(type="text", maxlength="15", placeholder="请填写主题名称，最长15个字")
+						.form-group
+							label.col-sm-1.control-label 主题形式
+							.col-sm-11.pl0
+								label.radio-inline
+									input(type="radio", name="theme-type", value="0")
+									专题
+								label.radio-inline
+									input(type="radio", name="theme-type", value="0")
+									专题+推荐为
+						.recommend-edit-container(style="display:none")
+							- var n = 1
+							while n < 4
+								.recommend-item
+									.form-group
+										label.col-sm-1.control-label 推荐位#{n++}
+										.form-inline.col-sm-11.pl0
+											select.form-control.recommend-type
+												option(value="") 请选择
+												option(value="2") 习题集
+												option(value="3") 教师
+											select.form-control.recommend-info.ml10
+												option(value="") 请选择要推荐的老师
+												option(value="xxx") 13535922700
+												option(value="xxx") 13311069141
+									.form-group
+										label.col-sm-1.control-label 背景图片
+										.col-sm-11.pl0
+											img.recommend-banner(title="点击上传图片")
+						button.btn.btn-primary.pull-right 保存
+				aside.theme-preview-container.panel.panel-default.ml10
+					.panel-heading 主题预览
+					.panel-body.theme-preview-zone
+						img.special-banner
+						.recommend-container.ui-flex-between
+							img.recommend-banner
+							img.recommend-banner
+							img.recommend-banner
+						.special-description.
+							六年级的同学们，王老师是新锐中考名师，辅导中考状元，欢迎大家积极关注，有不懂的题向王老师请求讲解。

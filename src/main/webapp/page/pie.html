@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>数据可视化</title>
+		<link href="../css/bootstrap/bootstrap.3.3.5.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../css/common_151030.css" rel="stylesheet" type="text/css"/>
+		<style type="text/css">
+			.pie-container {
+				height: 400px;
+			}
+		</style>
+		<script type="text/javascript">
+			var path = '<%=path %>';
+			var basePath = '../';
+			(function(){MX=window.MX||{};var g=function(a,c){for(var b in c)a.setAttribute(b,c[b])};MX.load=function(a){var c=a.js,b=c?".js":".css",d=-1==location.search.indexOf("jsDebug"),e=a.js||a.css;-1==e.indexOf("http://")?(e=(a.path||window.basePath)+((c?"js/":"css/")+e)+(!d&&!c?".source":""),b=e+(a.version?"_"+a.version:"")+b):b=e;d||(d=b.split("#"),b=d[0],b=b+(-1!=b.indexOf("?")?"&":"?")+"r="+Math.random(),d[1]&&(b=b+"#"+d[1]));if(c){var c=b,h=a.success,f=document.createElement("script");f.onload=function(){h&&h();f=null};g(f,{type:"text/javascript",src:c,async:"true"});document.getElementsByTagName("head")[0].appendChild(f)}else{var c=b,i=a.success,a=document.createElement("link");g(a,{rel:"stylesheet"});document.getElementsByTagName("head")[0].appendChild(a);g(a,{href:c});i&&(a.onload=function(){i()})}}})();
+		</script>
+	</head>
+	<body>
+		<header class="ui-page-header">
+			<div class="mini-title">学科统计分析</div>
+		</header>
+		<div class="panel panel-default">
+			<div class="panel-heading form-inline">
+				<div class="form-group">
+					<label>日期</label>
+					<input id="statistic-date" type="text" data-date-format="yyyy-mm-dd" class="form-control form-date">
+				</div>
+			</div>
+			<div id="subject-statistic-container" class="panel-body pie-container"></div>
+		</div>
+		<script type="text/javascript">
+			MX.load({
+				js: 'lib/sea',
+				version: '151124',
+				success: function() {
+					seajs.use(['lib/jquery', 'lib/highcharts', 'util/ajaxPromise', 'util/bootstrap.datetimepicker.zh-CN'], function($, highcharts, ajaxPromise, datetimepicker) {
+						var renderSubject, _date;
+						_date = $('#statistic-date');
+						_date.datetimepicker({
+							language: 'zh-CN',/*加载日历语言包，可自定义*/
+							weekStart: 1,
+							todayBtn: 1,
+							autoclose: 1,
+							todayHighlight: 1,
+							minView: 2,
+							forceParse: 0,
+							showMeridian: 1
+						}).on('changeDate', function(e) {
+							renderSubject(_date.val());
+						});
+						renderSubject = function(date) {
+							var data = {};
+							if(date !== undefined) {
+								data.date = date;
+							}
+							ajaxPromise({
+								url: window.basePath + 'confidential/querylogSubjectSearch',
+								type: 'GET',
+								data: data,
+								dataType: 'json'
+							}).then(function(data) {
+								var result = data.result;
+								if(date === undefined) {
+									_date.val(result.date);
+								} else if(_date.val() !== result.date) {
+									alert(_date.val() + '暂无数据');
+									_date.val(result.date);
+								}
+								$('#subject-statistic-container').highcharts({
+									title: {
+										text: 'Subject stat (' + result.date + ')'
+									},
+									subtitle: {
+										text: 'Source: Cassandra DB'
+									},
+									tooltip: {
+										pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+									},
+									plotOptions: {
+										pie: {
+											allowPointSelect: true,
+											cursor: 'pointer',
+											dataLabels: {
+												enabled: true,
+												color: '#000',
+												connectorColor: '#000',
+												format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+											}
+										}
+									},
+									series: [{
+										type: 'pie',
+										name: 'subject proportion',
+										data: result.data
+									}]
+								});
+							})
+						};
+						renderSubject();
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

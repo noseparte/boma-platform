@@ -1,0 +1,300 @@
+/**题目样式
+  *录题后台与客户端保持一致
+  *录题后台和客户端应该单独编写一些覆盖样式
+  */
+/*app style 3.0*/
+/*question style: spider*/
+/*basic*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote {
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: none;
+	font-family: inherit;
+}
+fieldset, img{
+	border: none
+}
+img{
+	vertical-align: middle;
+	max-width: 100%;
+}
+br{
+	letter-spacing: normal;
+}
+address, caption, cite, code, dfn, em, strong, var, optgroup{
+	font-style: normal;
+	font-weight: normal;
+}
+h1, h2, h3, h4, h5, h6{
+	font-size: 100%;
+	font-weight: normal;
+}
+h3{
+	font-size: 14px;
+}
+abbr, acronym{
+	border: 0;
+	font-variant: normal;
+}
+input, button, textarea, select, optgroup, option{
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+}
+code, kbd, samp, tt{
+	font-size: 100%
+}
+input, button, textarea, select{
+	*font-size: 100%
+}
+dl, ul, ol, ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+table td{
+	line-height: 20px
+}
+sup, sub{
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-size: 11px;
+}
+:link, :visited, ins{
+	text-decoration: none;
+}
+blockquote, q{
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after{
+	content: none;
+}
+body{
+	font-size: 14px;
+	font-family: Microsoft YaHei, Arial, Verdana, Helvetica, sans-serif;
+}
+tt{
+	font-style: italic;
+	font-size: 16px;
+}
+hr{
+	clear: both;
+}
+pre {
+	white-space: normal;
+}
+/*jyeoo*/
+.pt0 {
+	padding: 2px 0 5px;
+	font-size: 14px;
+	font-weight: 700;
+}
+.pt1{
+	overflow: hidden;
+	zoom: 1;
+	clear: both;
+	line-height: 25px;
+}
+.pt1 img{
+	position: relative;
+}
+.pt2 {
+	margin: 0;
+	padding: 10px 5px;
+}
+.pt3, .pt4, .pt5, .pt6, .pt7 {
+	clear: both;
+	overflow: hidden;
+	zoom: 1;
+	position: relative;
+}
+.pt3 {
+	margin-top: 10px;
+}
+.pt8 a:link, .pt8 a:visited{
+	margin-right: 10px;
+	padding: 2px 5px;
+}
+.pt8 a:hover{
+	background:#fc0;
+}
+.pt9{
+	text-align: right;
+	border: none;
+}
+.MathXxb{
+	border: none;
+	direction: ltr;
+	line-height: normal;
+	display: inline-block;
+	float: none;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: 1px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-indent: 0;
+	text-transform: none;
+	white-space: nowrap;
+	word-spacing: normal;
+	word-wrap: normal;
+	-webkit-text-size-adjust: none;
+}
+.MathXxb div, .MathJye span{
+	border: none;
+	margin: 0;
+	padding: 0;
+	line-height: normal;
+	text-align: left;
+	height: auto;
+	_height: auto;
+	white-space: normal;
+}
+.MathXxb table{
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: normal;
+	font-size: inherit;
+	font-style: normal;
+	font-weight: normal;
+	border: 0;
+	float: none;
+	display: inline-block;
+}
+.MathXxb table td{
+	padding: 0;
+	font-size: inherit;
+	line-height: normal;
+	white-space: nowrap;
+	border: none;
+	width: auto;
+}
+.MathXxb_mi{
+	font-style: italic;
+}
+/*ks5u*/
+.deText{
+	word-break: break-all;
+}
+/*manfen5*/
+.xxb_manfen{
+	word-break: break-all;
+}
+/*mofangge*/
+.ke-zeroborder{
+	width: 100%;
+}
+table[width='650']{
+	width: auto!important;
+}
+table[align] {
+	float: none;
+}
+/*question style: spider --end*/
+/*app style 3.0 --end*/
+/*xiaoyuan*/
+span.img{
+	display: inline-block;
+}
+.question.detail{
+	font-size: 15px;
+	color:#333;
+	line-height: 24px;
+	overflow: hidden;
+}
+/*xueba*/
+.theme-dark{
+	background-color: #2E314B;
+	color: #dedede;
+}
+.options{
+	font-family: Helvetica,Arial,sans-serif;
+}
+.wb_math,.wb_physics{
+	font-family: MathItalic,MainRegular,Helvetica,Arial,sans-serif;
+}
+.wb_biology,.wb_chemistry{
+	font-family: MainRegular,Helvetica,Arial,sans-serif;
+}
+table{
+	width: 100%;
+	max-width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+td,th{
+	line-height: 1.75;
+	padding: 0;
+}
+.wb_options>li+li{
+	margin-top: 5px
+}
+.wb_options>li:before,.wb_options>li:after{
+	content:" ";
+	display: table;
+}
+.wb_options>li:after{
+	clear: both
+}
+.label-answer{
+	float: left;
+	padding: 0 5px;
+	font-family: Helvetica,Arial,sans-serif;
+	font-style: normal;
+}
+.box-answer{
+	margin-left: 28px;
+}
+.label-header{
+	display: block;
+	overflow: hidden;
+	position: relative;
+	font-size: 14px;
+}
+.label-header>.text-header{
+	background-color: #fff;
+	color: #3bf;
+	line-height: 40px;
+	padding: 0 8px;
+	position: absolute;
+	left: 4%;
+}
+.label-header>hr{
+	border-top-color: #3bf;
+}
+.section-header{
+	color: #3bf;
+	display: block;
+	margin: 10px 0;
+	font-size: 18px;
+	font-style: normal;
+}
+.section-header.ios{
+	font-size: 17px;
+}
+.underline{
+	border-bottom: 1px solid #666;
+	padding: 0 16px;
+	margin: 0 2px;
+}
+.declare{
+	color: #ccc;
+	text-align: right;
+	font-size: 14px;
+}
+.declare>a,.declare>a:hover,.declare>a:focus{
+	color:#ccc;
+}
+.edittable{
+	border: 1px solid #ddd;
+}
+.edittable td,.edittable th{
+	border: 1px solid #ddd;
+	padding: 8px 4px;
+	text-align: center;
+}

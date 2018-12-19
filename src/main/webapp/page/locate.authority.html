@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分配权限</title>
+	<link rel="stylesheet" href="../css/bootstrap/bootstrap.3.3.5.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<script type="text/javascript" src="../js/lib/jquery.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery.tmpl.min.js"></script>
+	<style type="text/css">
+		.table-middle>tbody>tr>td {
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<table class="table table-bordered table-middle">
+		<thead>
+			<tr>
+				<th>一级目录</th>
+				<th>二级目录</th>
+				<th>三级目录</th>
+			</tr>
+		</thead>
+		<tbody id="accredit">
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		var data,
+			compareLeaf,
+			rightsTree,
+			getLeafNums,
+			rightsTmpl;
+		compareLeaf = function(item1, item2) {
+			var	index1 = item1.index, 
+				index2 = item2.index,
+				length1 = index1.length,
+				length2 = index2.length,
+				length = Math.min(length1, length2),
+				compare = 0,
+				k;
+			for(k = 0; k < length; k++) {
+				if(index1[k] < index2[k]) {
+					compare = -1;
+					return -1;
+				} else if(index1[k] > index2[k]) {
+					compare = 1;
+					return 1;
+				} else {
+					compare = 0;
+				}
+			}
+			if(compare === 0 && length1 !== length2) {
+				if(length1 < length2) {
+					return -1;
+				} else {
+					return 1;
+				}
+			} else {
+				return 0;
+			}
+		};
+		// getLeafNums = function(data) {
+		// 	var data = data || [],
+		// 		length = data.length,
+		// 		i,
+		// 		item,
+		// 		level,
+		// 		urlLength,
+		// 		grand,
+		// 		parent;
+		// 	for(i = 0; i < length; i++) {
+		// 		item = data[i];
+		// 		level = item.level;
+		// 		urlLength = item.url.length;
+		// 		if(urlLength === 0) {
+		// 			if(level === 0) {
+		// 				grand = item;
+		// 			} else if(level === 1) {
+		// 				parent = item;
+		// 			}
+		// 		} else if(urlLength > 0) {
+		// 			if(level > 0) {
+		// 				grand.leafNums++;
+		// 				if(level > 1) {
+		// 					parent.leafNums++;
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// 	return data;
+		// };
+		getLeafNum = function(data) {
+			var i, len, j, parents = [], item, level, isLeaf;
+			data = data || [];
+			for(i = 0, len = data.length; i < len; ++i) {
+				item = data[i];
+				level = item.level;
+				isLeaf = !!item.url;
+				if(!isLeaf) {
+					item.leafNum = 0;
+					parents[level] = item;
+				} else {
+					for(j = 0; j < level; ++j) {
+						parents[j].leafNum++;
+					}
+				}
+			}
+		};
+		data = [
+			{
+				level: 0,
+				name: '运营管理',
+				url: '',
+				index: '1'
+			},
+			{
+				level: 1,
+				name: '用户提问管理',
+				url: '',
+				index: '1-1'
+			},
+			{
+				level: 2,
+				name: '用户求组实时处理',
+				url: 'xxx',
+				index: '1-1-1'
+			},
+			{
+				level: 1,
+				name: '运营活动管理',
+				url: '',
+				index: '1-2'
+			},
+			{
+				level: 2,
+				name: '活动待审',
+				url: 'xxx',
+				index: '1-2-1'
+			},
+			{
+				level: 0,
+				name: '运营管理',
+				url: '',
+				index: '2'
+			},
+			{
+				level: 1,
+				name: '用户提问管理',
+				url: '',
+				index: '2-1'
+			},
+			{
+				level: 2,
+				name: '用户求组实时处理',
+				url: 'xxx',
+				index: '2-1-1'
+			},
+			{
+				level: 1,
+				name: '运营活动管理',
+				url: '',
+				index: '2-2'
+			},
+			{
+				level: 2,
+				name: '活动待审',
+				url: 'xxx',
+				index: '2-2-1'
+			}
+		];
+		dataLength = data.length;
+		rightsTree = data.map(function(item) {
+			var indexArrs = item.index.split('-').map(function(index){
+				return parseInt(index);
+			});
+			item.indexArrs = indexArrs;
+			item.leafNums = 0;
+			return item;
+		}).sort(compareLeaf);
+		getLeafNum(rightsTree);
+		console.log(JSON.stringify(rightsTree));
+		// rightsTmpl = [
+		// 	'<tr>',
+		// 	'{{each rights}}',
+		// 		'{{if $value.leafNums > 0}}',
+		// 			'<td rowspan="{{= $value.leafNums}}" data-index="{{= $value.index}}">{{= $value.name}}</td>',
+		// 		'{{else}}',
+		// 			'<td>{{= $value.name}}</td></tr>',
+		// 			'{{if $index < rights.length -1}}',
+		// 				'<tr>',
+		// 			'{{/if}}',
+		// 		'{{/if}}',
+		// 	'{{/each}}'
+		// ].join('');
+		rightsTmpl = [
+			'{{each rights}}',
+			'{{if $index === 0 || $index < rights.length - 1 && $value.type === 1}}',
+			'<tr>',
+			'{{/if}}',
+				'<td{{if !$value.url}} rowspan="{{= $value.leafNum}}"{{/if}} data-index="{{= $value.index}}">{{= $value.name}}</td>',
+			'{{if $value.url}}',
+			'</tr>',
+			'{{/if}}',
+			'{{/each}}'
+		].join('');
+		$.template('template', rightsTmpl);
+		$.tmpl('template', {
+			'rights': rightsTree
+		}).appendTo('#accredit');
+	</script>
+	</script>
+</body>
+</html>;

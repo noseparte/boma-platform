@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>校正题目</title>
+	<link rel="stylesheet" href="../css/exam/editor.css" />
+	<link rel="stylesheet" href="../css/exam/problem.css" />
+	<link rel="stylesheet" href="../css/bootstrap/bootstrap.3.3.5.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<style type="text/css">
+		.edit-title {
+			display: inline-block;
+			float: right;
+			padding:4px 10px;
+			margin: 2px 4px;
+		}
+		.border-container {
+			border: 1px solid #ccc;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<header class="ui-page-header">
+		<div class="mini-title">当前位置：校正题目</div>
+	</header>
+	<article class="container-fluid">
+		<header class="border-container mb6">修改人处理结果：报错题目可修改</header>
+		<div class="ui-flex-container">
+			<section class="flex1">
+				<header class="h4">报错题目</header>
+				<article  class="border-container">
+					<h4>题目</h4>
+					<div>
+						<div class="pt1"><!--B1--><img alt="学习宝" src="http://124.207.37.218:8088/5,0485c9eea718e5" style="vertical-align:middle;FLOAT:right;" data-width="195" data-height="160"><span class="qseq"></span>已知函数f（x）=Asin（ωx+φ）+b（A、ω＞0，0＜φ＜π，b为常数）一段图象如图所示． <br>（Ⅰ）求函数f（x）的解析式； <br>（Ⅱ）将函数y=f（x）的图象向左平移 <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">π</td></tr><tr><td>12</td></tr></tbody></table></span>个单位，再将所得图象上各点的横坐标扩大为原来的4倍，得到函数y=g（x）的图象．求函数g（x）的单调递增区间． <!--E1--></div>
+					</div>
+					<h4>答案</h4>
+					<div>ABCD</div>
+					<h4>解题思路</h4>
+					<div>AAA</div>
+					<h4>标签</h4>
+					<div>
+						<span class="label label-default">数学</span>
+						<span class="label label-default">小学</span>
+						<span class="label label-default">单选</span>
+					</div>
+				</article>
+			</section>
+			<section class="flex1 ml10">
+				<header class="h4">修改后题目</header>
+				<article  class="border-container">
+					<h4>题目</h4>
+					<div>
+						<div class="pt1"><!--B1--><img alt="学习宝" src="http://124.207.37.218:8088/5,0485c9eea718e5" style="vertical-align:middle;FLOAT:right;" data-width="195" data-height="160"><span class="qseq"></span>已知函数f（x）=Asin（ωx+φ）+b（A、ω＞0，0＜φ＜π，b为常数）一段图象如图所示． <br>（Ⅰ）求函数f（x）的解析式； <br>（Ⅱ）将函数y=f（x）的图象向左平移 <span class="MathXxb" mathtag="math" style="whiteSpace:nowrap;wordSpacing:normal;wordWrap:normal"><table cellpadding="-1" cellspacing="-1" style="margin-right:1px"><tbody><tr><td style="border-bottom:1px solid black">π</td></tr><tr><td>12</td></tr></tbody></table></span>个单位，再将所得图象上各点的横坐标扩大为原来的4倍，得到函数y=g（x）的图象．求函数g（x）的单调递增区间． <!--E1--></div>
+					</div>
+					<h4>答案</h4>
+					<div>ABCD</div>
+					<h4>解题思路</h4>
+					<div>AAA</div>
+					<h4>标签</h4>
+					<div>
+						<span class="label label-default">数学</span>
+						<span class="label label-default">小学</span>
+						<span class="label label-default">单选</span>
+					</div>
+				</article>
+			</section>
+		</div>
+		<section class="border-container">
+			<h4>审核结果</h4>
+			<div id="audit-zone">
+				<label>审核意见：</label>
+				<label class="radio-inline">
+					<input type="radio" name="error-status" value="0"> 审核通过
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="error-status" value="1"> 审核未通过
+				</label>
+			</div>
+			<div id="result">
+				<div class="accept" style="display:none">审核通过</div>
+				<div class="reject" style="display:none">审核未通过，原因：
+					<input type="text" class="form-control reason-txt" maxlength="30" val=""/>
+				</div>
+				<div class="reject">原因：<span class="text-danger">解题思路不能为空</span></div>
+			</div>
+		</section>
+	</article>
+	<footer class="text-center ui-page-footer" id="submit-zone">
+		<a class="btn btn-default min-w100">返回</a>
+		<button class="btn btn-primary min-w100 ml20" id="correct-submit">提交</button>
+	</footer>
+	<script type="text/javascript">
+		MX.load({
+		js: 'lib/sea',
+		version: '150723a',
+		success: function() {
+			seajs.use(['module/Audit'], function(audit) {
+				audit.init('', {
+					url: window.basePath + 'tranops/audit',
+					confirm: function() {
+						alert('审核完成');
+						document.location.href = window.basePath + 'tranops/tranOpsAdminAuditSearch';
+					},
+					reset: function() {
+						alert('重置完成');
+						document.location.href = window.basePath + 'tranops/tranOpsAdminAuditSearch';
+					}
+				});
+			});
+		}
+	});
+	</script>
+</body>
+</html>

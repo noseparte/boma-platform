@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.user.User" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.user.User" >
+    <id column="accountid" property="accountid" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="userkey" property="userkey" jdbcType="VARCHAR" />
+    <result column="validatecode" property="validatecode" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="serverid" property="serverid" jdbcType="VARCHAR" />
+    <result column="logincnt" property="logincnt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    accountid, password, userkey, validatecode, type, status, createtime, updatetime,serverid,logincnt
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where accountid = #{accountid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByUserkey" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user 
+		<where>
+		userkey = #{userkey,jdbcType=VARCHAR}
+		<if test="password != null and password != ''">
+			AND password = #{password,jdbcType=VARCHAR}
+		</if>
+		</where>
+	</select>
+    <select id="selectByVerify" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user 
+		<where>
+		        status = 0
+			<if test="userkey != null and userkey != ''">
+				AND user_key = #{userKey,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				AND password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="validatecode != null">
+				AND validatecode = #{validatecode,jdbcType=INTEGER}
+			</if>		
+		</where>
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where accountid = #{accountid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.user.User" >
+    insert into user (accountid, password, userkey, 
+      validatecode, type, status, 
+      createtime, updatetime)
+    values (#{accountid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userkey,jdbcType=VARCHAR}, 
+      #{validatecode,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.user.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="userkey != null" >
+        userkey,
+      </if>
+      <if test="validatecode != null" >
+        validatecode,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="serverid != null" >
+        serverid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userkey != null" >
+        #{userkey,jdbcType=VARCHAR},
+      </if>
+      <if test="validatecode != null" >
+        #{validatecode,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serverid != null" >
+         #{serverid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+     <update id="updateUserBind" parameterType="com.xmbl.ops.model.user.User" >
+    update user
+    <set >
+      <if test="userkey != null" >
+        userkey = #{userkey,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+     <if test="accountid != null" >
+         where  accountid = #{accountid,jdbcType=VARCHAR}
+    </if>
+  </update>
+   <update id="updateUserPassword" parameterType="com.xmbl.ops.model.user.User" >
+    update user
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+     <if test="userkey != null" >
+         where  userkey = #{userkey,jdbcType=VARCHAR}
+    </if>
+  </update>
+    <update id="updateUserValidatecode" parameterType="com.xmbl.ops.model.user.User" >
+    update user
+    <set >
+      <if test="validatecode != null" >
+        validatecode = #{validatecode,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+     <if test="userkey != null" >
+         where  userkey = #{userkey,jdbcType=VARCHAR}
+    </if>
+  </update>
+  <update id="updateIfNecessary" parameterType="com.xmbl.ops.model.user.User" >
+    update user
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userkey != null" >
+        userkey = #{userkey,jdbcType=VARCHAR},
+      </if>
+      <if test="validatecode != null" >
+        validatecode = #{validatecode,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where accountid = #{accountid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.user.User" >
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      userkey = #{userkey,jdbcType=VARCHAR},
+      validatecode = #{validatecode,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where accountid = #{accountid,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateUserForLogin"  parameterType="java.lang.String" >
+    update user
+    set logincnt = logincnt +1
+    where userkey = #{userkey,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByUserkeyAndServerId"  parameterType="java.util.Map">
+    update user
+    set logincnt = #{logincnt,jdbcType=INTEGER},
+    accountid = #{accountid,jdbcType=VARCHAR},
+    serverid =  #{serverid,jdbcType=VARCHAR}
+    where userkey = #{newUserkey,jdbcType=VARCHAR} and password = #{newpassword,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updatePwd"  parameterType="java.util.Map">
+    update user
+    set password = #{newpassword,jdbcType=VARCHAR}
+    where userkey = #{userkey,jdbcType=VARCHAR} and password = #{oldpassword,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

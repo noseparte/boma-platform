@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pay_retention" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.organization.PayRetention" >
+    <id column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="platformid" property="platformid" jdbcType="BIGINT" />
+    <result column="fispu" property="fispu" jdbcType="BIGINT" />
+    <result column="one_day_retained" property="oneDayRetained" jdbcType="BIGINT" />
+    <result column="two_day_retained" property="twoDayRetained" jdbcType="BIGINT" />
+    <result column="three_day_retained" property="threeDayRetained" jdbcType="BIGINT" />
+    <result column="four_day_retained" property="fourDayRetained" jdbcType="BIGINT" />
+    <result column="five_day_retained" property="fiveDayRetained" jdbcType="BIGINT" />
+    <result column="six_day_retained" property="sixDayRetained" jdbcType="BIGINT" />
+    <result column="seven_day_retained" property="sevenDayRetained" jdbcType="BIGINT" />
+    <result column="ten_day_retained" property="tenDayRetained" jdbcType="BIGINT" />
+    <result column="fifteen_day_retained" property="fifteenDayRetained" jdbcType="BIGINT" />
+    <result column="thirty_day_retained" property="thirtyDayRetained" jdbcType="BIGINT" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    createtime, gameid, gameserverid, platformid, fispu, one_day_retained, two_day_retained, 
+    three_day_retained, four_day_retained, five_day_retained, six_day_retained, seven_day_retained, 
+    ten_day_retained, fifteen_day_retained, thirty_day_retained, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.organization.PayRetentionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from pay_retention
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.organization.PayRetentionKey" >
+    delete from pay_retention
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.organization.PayRetention" >
+    insert into pay_retention (createtime, gameid, gameserverid, 
+      platformid, fispu, one_day_retained, 
+      two_day_retained, three_day_retained, four_day_retained, 
+      five_day_retained, six_day_retained, seven_day_retained, 
+      ten_day_retained, fifteen_day_retained, thirty_day_retained, 
+      updatetime)
+    values (#{createtime,jdbcType=TIMESTAMP}, #{gameid,jdbcType=BIGINT}, #{gameserverid,jdbcType=BIGINT}, 
+      #{platformid,jdbcType=BIGINT}, #{fispu,jdbcType=BIGINT}, #{oneDayRetained,jdbcType=BIGINT}, 
+      #{twoDayRetained,jdbcType=BIGINT}, #{threeDayRetained,jdbcType=BIGINT}, #{fourDayRetained,jdbcType=BIGINT}, 
+      #{fiveDayRetained,jdbcType=BIGINT}, #{sixDayRetained,jdbcType=BIGINT}, #{sevenDayRetained,jdbcType=BIGINT}, 
+      #{tenDayRetained,jdbcType=BIGINT}, #{fifteenDayRetained,jdbcType=BIGINT}, #{thirtyDayRetained,jdbcType=BIGINT}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.organization.PayRetention" >
+    insert into pay_retention
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="platformid != null" >
+        platformid,
+      </if>
+      <if test="fispu != null" >
+        fispu,
+      </if>
+      <if test="oneDayRetained != null" >
+        one_day_retained,
+      </if>
+      <if test="twoDayRetained != null" >
+        two_day_retained,
+      </if>
+      <if test="threeDayRetained != null" >
+        three_day_retained,
+      </if>
+      <if test="fourDayRetained != null" >
+        four_day_retained,
+      </if>
+      <if test="fiveDayRetained != null" >
+        five_day_retained,
+      </if>
+      <if test="sixDayRetained != null" >
+        six_day_retained,
+      </if>
+      <if test="sevenDayRetained != null" >
+        seven_day_retained,
+      </if>
+      <if test="tenDayRetained != null" >
+        ten_day_retained,
+      </if>
+      <if test="fifteenDayRetained != null" >
+        fifteen_day_retained,
+      </if>
+      <if test="thirtyDayRetained != null" >
+        thirty_day_retained,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="platformid != null" >
+        #{platformid,jdbcType=BIGINT},
+      </if>
+      <if test="fispu != null" >
+        #{fispu,jdbcType=BIGINT},
+      </if>
+      <if test="oneDayRetained != null" >
+        #{oneDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="twoDayRetained != null" >
+        #{twoDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="threeDayRetained != null" >
+        #{threeDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="fourDayRetained != null" >
+        #{fourDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="fiveDayRetained != null" >
+        #{fiveDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="sixDayRetained != null" >
+        #{sixDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="sevenDayRetained != null" >
+        #{sevenDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="tenDayRetained != null" >
+        #{tenDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="fifteenDayRetained != null" >
+        #{fifteenDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="thirtyDayRetained != null" >
+        #{thirtyDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.organization.PayRetention" >
+    update pay_retention
+    <set >
+      <if test="fispu != null" >
+        fispu = #{fispu,jdbcType=BIGINT},
+      </if>
+      <if test="oneDayRetained != null" >
+        one_day_retained = #{oneDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="twoDayRetained != null" >
+        two_day_retained = #{twoDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="threeDayRetained != null" >
+        three_day_retained = #{threeDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="fourDayRetained != null" >
+        four_day_retained = #{fourDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="fiveDayRetained != null" >
+        five_day_retained = #{fiveDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="sixDayRetained != null" >
+        six_day_retained = #{sixDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="sevenDayRetained != null" >
+        seven_day_retained = #{sevenDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="tenDayRetained != null" >
+        ten_day_retained = #{tenDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="fifteenDayRetained != null" >
+        fifteen_day_retained = #{fifteenDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="thirtyDayRetained != null" >
+        thirty_day_retained = #{thirtyDayRetained,jdbcType=BIGINT},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.organization.PayRetention" >
+    update pay_retention
+    set fispu = #{fispu,jdbcType=BIGINT},
+      one_day_retained = #{oneDayRetained,jdbcType=BIGINT},
+      two_day_retained = #{twoDayRetained,jdbcType=BIGINT},
+      three_day_retained = #{threeDayRetained,jdbcType=BIGINT},
+      four_day_retained = #{fourDayRetained,jdbcType=BIGINT},
+      five_day_retained = #{fiveDayRetained,jdbcType=BIGINT},
+      six_day_retained = #{sixDayRetained,jdbcType=BIGINT},
+      seven_day_retained = #{sevenDayRetained,jdbcType=BIGINT},
+      ten_day_retained = #{tenDayRetained,jdbcType=BIGINT},
+      fifteen_day_retained = #{fifteenDayRetained,jdbcType=BIGINT},
+      thirty_day_retained = #{thirtyDayRetained,jdbcType=BIGINT},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where createtime = #{createtime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and platformid = #{platformid,jdbcType=BIGINT}
+  </update>
+</mapper>

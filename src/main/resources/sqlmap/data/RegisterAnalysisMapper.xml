@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmbl.ops.model.data.RegisterAnalysis" >
+  <resultMap id="BaseResultMap" type="com.xmbl.ops.model.data.RegisterAnalysis" >
+    <id column="channelid" property="channelid" jdbcType="VARCHAR" />
+    <id column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <id column="gameid" property="gameid" jdbcType="BIGINT" />
+    <id column="gameserverid" property="gameserverid" jdbcType="BIGINT" />
+    <id column="gameversion" property="gameversion" jdbcType="VARCHAR" />
+    <id column="platfromid" property="platfromid" jdbcType="VARCHAR" />
+    <id column="type" property="type" jdbcType="VARCHAR" />
+    <result column="year" property="year" jdbcType="VARCHAR" />
+    <result column="month" property="month" jdbcType="VARCHAR" />
+    <result column="day" property="day" jdbcType="VARCHAR" />
+    <result column="hour" property="hour" jdbcType="VARCHAR" />
+    <result column="minute" property="minute" jdbcType="VARCHAR" />
+    <result column="second" property="second" jdbcType="VARCHAR" />
+    <result column="registeraccoutcount" property="registeraccoutcount" jdbcType="BIGINT" />
+    <result column="activeaccoutcount" property="activeaccoutcount" jdbcType="BIGINT" />
+    <result column="registerplayercount" property="registerplayercount" jdbcType="BIGINT" />
+    <result column="loginaccountcount" property="loginaccountcount" jdbcType="BIGINT" />
+    <result column="maccount" property="maccount" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    channelid, datetime, gameid, gameserverid, gameversion, platfromid, type, year, month, 
+    day, hour, minute, second, registeraccoutcount, activeaccoutcount, registerplayercount, 
+    loginaccountcount, maccount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xmbl.ops.model.data.RegisterAnalysis" >
+    select 
+    <include refid="Base_Column_List" />
+    from register_analysis
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and type = #{type,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xmbl.ops.model.data.RegisterAnalysis" >
+    delete from register_analysis
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and type = #{type,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmbl.ops.model.data.RegisterAnalysis" >
+    insert into register_analysis (channelid, datetime, gameid, 
+      gameserverid, gameversion, platfromid, 
+      type, year, month, 
+      day, hour, minute, 
+      second, registeraccoutcount, activeaccoutcount, 
+      registerplayercount, loginaccountcount, maccount
+      )
+    values (#{channelid,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, #{gameid,jdbcType=BIGINT}, 
+      #{gameserverid,jdbcType=BIGINT}, #{gameversion,jdbcType=VARCHAR}, #{platfromid,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, #{month,jdbcType=VARCHAR}, 
+      #{day,jdbcType=VARCHAR}, #{hour,jdbcType=VARCHAR}, #{minute,jdbcType=VARCHAR}, 
+      #{second,jdbcType=VARCHAR}, #{registeraccoutcount,jdbcType=BIGINT}, #{activeaccoutcount,jdbcType=BIGINT}, 
+      #{registerplayercount,jdbcType=BIGINT}, #{loginaccountcount,jdbcType=BIGINT}, #{maccount,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmbl.ops.model.data.RegisterAnalysis" >
+    insert into register_analysis
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="gameid != null" >
+        gameid,
+      </if>
+      <if test="gameserverid != null" >
+        gameserverid,
+      </if>
+      <if test="gameversion != null" >
+        gameversion,
+      </if>
+      <if test="platfromid != null" >
+        platfromid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="hour != null" >
+        hour,
+      </if>
+      <if test="minute != null" >
+        minute,
+      </if>
+      <if test="second != null" >
+        second,
+      </if>
+      <if test="registeraccoutcount != null" >
+        registeraccoutcount,
+      </if>
+      <if test="activeaccoutcount != null" >
+        activeaccoutcount,
+      </if>
+      <if test="registerplayercount != null" >
+        registerplayercount,
+      </if>
+      <if test="loginaccountcount != null" >
+        loginaccountcount,
+      </if>
+      <if test="maccount != null" >
+        maccount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelid != null" >
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameid != null" >
+        #{gameid,jdbcType=BIGINT},
+      </if>
+      <if test="gameserverid != null" >
+        #{gameserverid,jdbcType=BIGINT},
+      </if>
+      <if test="gameversion != null" >
+        #{gameversion,jdbcType=VARCHAR},
+      </if>
+      <if test="platfromid != null" >
+        #{platfromid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="hour != null" >
+        #{hour,jdbcType=VARCHAR},
+      </if>
+      <if test="minute != null" >
+        #{minute,jdbcType=VARCHAR},
+      </if>
+      <if test="second != null" >
+        #{second,jdbcType=VARCHAR},
+      </if>
+      <if test="registeraccoutcount != null" >
+        #{registeraccoutcount,jdbcType=BIGINT},
+      </if>
+      <if test="activeaccoutcount != null" >
+        #{activeaccoutcount,jdbcType=BIGINT},
+      </if>
+      <if test="registerplayercount != null" >
+        #{registerplayercount,jdbcType=BIGINT},
+      </if>
+      <if test="loginaccountcount != null" >
+        #{loginaccountcount,jdbcType=BIGINT},
+      </if>
+      <if test="maccount != null" >
+        #{maccount,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmbl.ops.model.data.RegisterAnalysis" >
+    update register_analysis
+    <set >
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        day = #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="hour != null" >
+        hour = #{hour,jdbcType=VARCHAR},
+      </if>
+      <if test="minute != null" >
+        minute = #{minute,jdbcType=VARCHAR},
+      </if>
+      <if test="second != null" >
+        second = #{second,jdbcType=VARCHAR},
+      </if>
+      <if test="registeraccoutcount != null" >
+        registeraccoutcount = #{registeraccoutcount,jdbcType=BIGINT},
+      </if>
+      <if test="activeaccoutcount != null" >
+        activeaccoutcount = #{activeaccoutcount,jdbcType=BIGINT},
+      </if>
+      <if test="registerplayercount != null" >
+        registerplayercount = #{registerplayercount,jdbcType=BIGINT},
+      </if>
+      <if test="loginaccountcount != null" >
+        loginaccountcount = #{loginaccountcount,jdbcType=BIGINT},
+      </if>
+      <if test="maccount != null" >
+        maccount = #{maccount,jdbcType=BIGINT},
+      </if>
+    </set>
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and type = #{type,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmbl.ops.model.data.RegisterAnalysis" >
+    update register_analysis
+    set year = #{year,jdbcType=VARCHAR},
+      month = #{month,jdbcType=VARCHAR},
+      day = #{day,jdbcType=VARCHAR},
+      hour = #{hour,jdbcType=VARCHAR},
+      minute = #{minute,jdbcType=VARCHAR},
+      second = #{second,jdbcType=VARCHAR},
+      registeraccoutcount = #{registeraccoutcount,jdbcType=BIGINT},
+      activeaccoutcount = #{activeaccoutcount,jdbcType=BIGINT},
+      registerplayercount = #{registerplayercount,jdbcType=BIGINT},
+      loginaccountcount = #{loginaccountcount,jdbcType=BIGINT},
+      maccount = #{maccount,jdbcType=BIGINT}
+    where channelid = #{channelid,jdbcType=VARCHAR}
+      and datetime = #{datetime,jdbcType=TIMESTAMP}
+      and gameid = #{gameid,jdbcType=BIGINT}
+      and gameserverid = #{gameserverid,jdbcType=BIGINT}
+      and gameversion = #{gameversion,jdbcType=VARCHAR}
+      and platfromid = #{platfromid,jdbcType=VARCHAR}
+      and type = #{type,jdbcType=VARCHAR}
+  </update>
+  
+    <select id="searchList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		 from register_analysis
+	   	<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by datetime desc
+		<if test="offset != null and limit != null">
+		limit #{offset},#{limit};
+		</if>
+	</select>
+	<select id="searchCount" resultType="long">
+		select
+		count(1)
+		from register_analysis
+		<where>
+			<if test="startDate != null">
+				AND datetime &gt;= #{startDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				AND datetime &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+  
+  
+</mapper>
