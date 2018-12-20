@@ -107,7 +107,7 @@ public class IndexController extends AbstractController {
 				treeNode.setName(treeNode.getTreeDesc() + "." + treeNode.getName());
 		}
 		model.addAttribute("listtree", listtree);
-//		logger.info("listtree节点为：-------" + listtree);
+		logger.info("listtree节点为：-------" + listtree);
 		return "/index";
 		// }
 		// return "/login";
