@@ -23,16 +23,17 @@
                 <div class="ibox-content">
                     <form id="AcademyForm" name="AcademyForm" class="form-horizontal" method="post">
                         <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" id="id" value="${pd.id}" />
                             <label class="col-sm-2 control-label">课程名称</label>
                             <div class="col-sm-4">
-                                <input type="text" id="courseName" class="form-control required" name="courseName"
+                                <input type="text" id="courseName" class="form-control required" name="courseName" value="${pd.courseName}"
                                        style="width:500px;" class="form-control" placeholder="请输入要上传的标题 例如：排名奖励"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">课程类型</label>
                             <div class="col-sm-4">
-                                <select class="form-control"  name="courseType"  id="courseType" style="width:140px;">
+                                <select class="form-control"  name="courseType"  id="courseType" style="width:140px;" value="${pd.courseType}" >
                                     <option value="1">--精品--</option>
                                     <option value="2">--VIP--</option>
                                 </select>
@@ -43,7 +44,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">是否禁用</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control"  name="status"  id="status" style="width:140px;">
+                                    <select class="form-control"  name="status"  id="status" style="width:140px;"  value="${pd.status}">
                                         <option value="0">--启用--</option>
                                         <option value="1">--禁用--</option>
                                     </select>
@@ -52,7 +53,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-primary" type="button" onclick="save();">保存内容</button>
+                                <button class="btn btn-primary" type="button" onclick="saveOrEdit();">保存内容</button>
                                 <button class="btn btn-white" type="button" onclick="goBack();">取消</button>
                             </div>
                         </div>
@@ -98,7 +99,8 @@
     return true;
     }
     //表单提交
-    function save(){
+    function saveOrEdit(){
+    var id = $('#id').val(); //标题
     var courseName = $('#courseName').val(); //标题
     var courseType = $("#courseType").val(); //开始日期
     var status = $("#status").val(); //开始日期
@@ -106,8 +108,9 @@
     if(courseName != null && courseName != ''){
     $.ajax({
     type: "POST",
-    url: '<%=basePath%>api/course/add_course_type?tm=' + new Date().getTime(),
+    url: '<%=basePath%>api/course/edit_course_type?tm=' + new Date().getTime(),
     data: {
+        "id" : id,
         "courseName" : courseName,
         "courseType" : courseType,
         "status" : status
@@ -197,7 +200,9 @@
 
     //返回到列表页面
     function goBack(){
-    this.location.href="<%=basePath%>api/course/to_course_type_list_view";
+        //this.location.href="<%=basePath%>api/award/to_award_list";
+        layer.close(layer.index);
+        window.parent.location.reload();
     }
 
     </script>

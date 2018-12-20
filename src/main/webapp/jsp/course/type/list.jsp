@@ -66,6 +66,20 @@
             align: 'center',
             halign: 'center',
             width: '20%'
+        }, {
+            field: 'createTime',
+            title: '创建时间',
+            align: 'center',
+            halign: 'center',
+            width: '20%',
+            formatter: formatterDate
+        }, {
+            field: 'status',
+            title: '状态',
+            align: 'center',
+            halign: 'center',
+            width: '20%',
+            formatter: formatterStatus
         }]
     };
     $(document).ready(function (){
@@ -93,9 +107,30 @@
     }
     //跳转到新增页面
     function toAdd(){
-        window.location.href = "<%=basePath%>api/course/to_acagemy_add";
+        window.location.href = "<%=basePath%>api/course/to_course_type_list_add";
     }
-
+    // 跳转到编辑页面
+    function toEdit(){
+        var ids = getBstCheckedId('id');
+        if(!(ids.length == 1)){
+            layer.msg('请只选中一条信息再进行编辑。');
+            return false;
+        }
+        var id = ids[0];
+        if(id != null && id != ""){
+            layer.open({
+                type: 2,
+                title: '修改关卡秀信息',//窗体标题
+                area: ['600px', '500px'],//整个窗体宽、高，单位：像素px
+                fix: false,//窗体位置不固定
+                maxmin: false,//最大、小化是否显示
+                scrollbar: false,//整体页面滚动条是否显示
+                content: ['<%=basePath%>api/course/to_course_type_list_edit?id=' + id]
+            })
+        }else{
+            layer.msg("系统未获取到数据主键，请重新选择数据！");
+        }
+    }
     //批量删除数据
     function toDel(){
         var ids = getBstCheckedId('id');
@@ -110,7 +145,7 @@
             yes: function(index, layero){
                 $.ajax({
                     type: "POST",
-                    url: '<%=basePath%>api/award/award_delete?tm=' +  new Date().getTime(),
+                    url: '<%=basePath%>api/course/delete_course_type?tm=' +  new Date().getTime(),
                     data: {
                         IDS: idsStr
                     },
@@ -148,6 +183,42 @@
         }else{
             layer.msg("系统未获取到数据主键，请重新选择数据！");
         }
+    }
+
+    /**
+     * 格式化日期（含时间"00:00:00"）
+     */
+    function formatterDateTime(date) {
+        var datetime = date.getFullYear()
+            + "-"// "年"
+            + ((date.getMonth() + 1) > 10 ? (date.getMonth() + 1) : "0"
+                + (date.getMonth() + 1))
+            + "-"// "月"
+            + (date.getDate() < 10 ? "0" + date.getDate() : date
+                .getDate())
+            + " "
+            + (date.getHours() < 10 ? "0" + date.getHours() : date
+                .getHours())
+            + ":"
+            + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date
+                .getMinutes())
+            + ":"
+            + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date
+                .getSeconds());
+        return datetime;
+    }
+    //时间
+    function formatterDate(value, row, index){
+        var d = new Date(row.createTime);
+        var dformat = formatterDateTime(d);
+        return dformat;
+    }
+    // 是否生效格式化
+    function formatterStatus(value, row, index) {
+        if (value == 0) {
+            return "<button class=\"btn btn-info\">已生效</button>";
+        }
+        return "<button class=\"btn btn-danger\">未生效</button>";
     }
 
     //操作

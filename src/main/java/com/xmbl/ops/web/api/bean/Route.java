@@ -51,7 +51,16 @@ public class Route {
         public final static String TO_SPECIALTY_LIST_VIEW = "/to_specialty_list_view";
         public final static String TO_SPECIALTY_TYPE_ADD_VIEW = "/to_specialty_add_view";
         public final static String TO_SPECIALTY_TYPE_LIST_VIEW = "/to_specialty_type_list_view";
+
+
         public final static String TO_COURSE_TYPE_LIST_VIEW = "/to_course_type_list_view";
+        public final static String TO_COURSE_TYPE_LIST_ADD = "/to_course_type_list_add";
+        public final static String ADD_COURSE_TYPE = "/add_course_type";
+        public final static String DELETE_COURSE_TYPE = "/delete_course_type";
+        public final static String TO_COURSE_TYPE_LIST_EDIT = "/to_course_type_list_edit";
+        public final static String EDIT_COURSE_TYPE = "/edit_course_type";
+
+
     }
 
 

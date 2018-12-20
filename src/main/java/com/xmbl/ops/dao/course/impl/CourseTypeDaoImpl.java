@@ -6,6 +6,7 @@ import com.xmbl.ops.model.course.CourseType;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -38,4 +39,27 @@ public class CourseTypeDaoImpl extends EntityMongoDaoImpl<CourseType> implements
         }
         return this.getMongoTemplate().count(query,CourseType.class);
     }
+
+    @Override
+    public void add(CourseType course) {
+        this.getMongoTemplate().save(course);
+    }
+
+    @Override
+    public void delete(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
+        this.getMongoTemplate().remove(query,CourseType.class);
+    }
+
+    @Override
+    public CourseType findById(String id) {
+        return this.getMongoTemplate().findById(id,CourseType.class);
+    }
+
+    @Override
+    public void update(Query query, Update update) {
+        this.getMongoTemplate().updateFirst(query,update,CourseType.class);
+    }
+
 }

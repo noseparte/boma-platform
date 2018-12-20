@@ -19,7 +19,14 @@ public class CourseType extends GeneralBean {
     // ------------------------------------------------- params
     private String courseName;              //课程名称
     private int courseType;                 //课程类型 1.精品 2.VIP
+    private int status;                     //状态 0.可用 1.不可用
 
+    public CourseType() {
+    }
 
-
+    public CourseType(String courseName, int courseType, int status) {
+        this.courseName = courseName;
+        this.courseType = courseType;
+        this.status = status;
+    }
 }

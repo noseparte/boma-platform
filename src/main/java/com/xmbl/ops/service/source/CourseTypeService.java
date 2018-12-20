@@ -3,6 +3,8 @@ package com.xmbl.ops.service.source;
 import com.xmbl.ops.dao.course.CourseTypeDao;
 import com.xmbl.ops.model.course.CourseType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,5 +31,21 @@ public class CourseTypeService {
 
     public long count(String type) {
         return courseTypeDao.count(type);
+    }
+
+    public void add(CourseType course) {
+        courseTypeDao.add(course);
+    }
+
+    public void delete(String id) {
+        courseTypeDao.delete(id);
+    }
+
+    public CourseType findById(String id) {
+        return  courseTypeDao.findById(id);
+    }
+
+    public void update(Query query, Update update) {
+        courseTypeDao.update(query,update);
     }
 }
